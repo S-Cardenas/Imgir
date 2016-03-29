@@ -1,0 +1,22 @@
+<h1>Sign Up</h1>
+<form action="/users" method="post">
+	<%= auth_token %>
+	<label>Your Future Username:
+		<br>
+		<input type="text" name="user[username]" value="">
+	</label>
+	<br>
+	<br>
+	<label>Your Future Password:
+		<br>
+		<input type="password" name="user[password]" value="">
+		<br>
+		(Be warned, it must be at least 7 characters long!)
+	</label>
+<br>
+<br>
+	<input type="submit" value="Join the glorious empire">
+</form>
+<br>
+<br>
+<%= link_to "Already have an account?", new_session_url %>
