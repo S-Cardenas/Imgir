@@ -43,90 +43,81 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [ ] authentication
 - [ ] user signup/signin pages
 - [ ] blank landing page after signin
+- [ ] other pages redirect until signin
 
-### Phase 2: Image Model, API, and basic APIUtil (1.5 days)
+### Phase 2: Image Model and API with basic index. (1.5 days)
 
-**Objective:** Notes can be created, read, edited and destroyed through
-the API.
+**Objective:** Images can be created, invidually viewed, have their options edited and be destroyed through the API and the homepage has current images.
 
-- [ ] create `Note` model
+- [ ] create `Image` model
 - [ ] seed the database with a small amount of test data
-- [ ] CRUD API for notes (`NotesController`)
-- [ ] jBuilder views for notes
+- [ ] CRUD API for images (`ImagesController`)
+- [ ] jBuilder views for images with a basic index.
 - [ ] setup Webpack & Flux scaffold
-- [ ] setup `APIUtil` to interact with the API
-- [ ] test out API interaction in the console.
+- [ ] test making images using the API
+- [ ] setup index to display images without titles that link to their show pages
+### Phase 3: Add Albums (0.5 days)
 
-### Phase 3: Flux Architecture and Router (1.5 days)
+**Objective:** Images can be uploaded as albums and put together with other images. Albums are accessible on the front page by displaying their first image.
 
-**Objective:** Notes can be created, read, edited and destroyed with the
-user interface.
+- [ ] Create `Album` model
+- [ ] Do CRUD for `Album`
+-	[ ] Seed database with Albums for testing
+- [ ] Use jBuilder views to allow users to more easily view collections of images
+- [ ] Test creating, editing, and destroying albums.
 
-- [ ] setup the flux loop with skeleton files
-- [ ] setup React Router
-- implement each note component, building out the flux loop as needed.
-  - [ ] `NotesIndex`
-  - [ ] `NoteIndexItem`
-  - [ ] `NoteForm`
-- [ ] save Notes to the DB when the form loses focus or is left idle
-  after editing.
+### Phase 4: Set up React/Flux to allow users to more easily interact with images and albums (1 day)
 
-### Phase 4: Start Styling (0.5 days)
+**Objective** Frontend UI allows for users to easily create, update, and destroy images or albums.
+
+- implement each image component, building out the flux loop as needed.
+- [ ] `Homepage`
+- [ ] `HomepageItem`
+- [ ] `ImageForm`
+- [ ] `ImagePage`
+- [ ] test each component by creating images. Functionality should not change, only the frontend.
+
+### Phase 5: Start Styling (0.5 days)
 
 **Objective:** Existing pages (including singup/signin) will look good.
 
-- [ ] create a basic style guide
-- [ ] position elements on the page
+- [ ] format homepage to show the collection of images in way that is intuitive and easy to view.
+- [ ] add navbar with both authentication and image creation.
 - [ ] add basic colors & styles
 
-### Phase 5: Notebooks (1 day)
 
-**Objective:** Notes belong to Notebooks, and can be viewed by notebook.
+### Phase 6: Comments (1 day)
 
-- [ ] create `Notebook` model
+**Objective:** Allow users to add comments to images and albums and upvote or downvote both images and comments.
+
+- [ ] create `Comment` model and join table
 - build out API, Flux loop, and components for:
-  - [ ] Notebook CRUD
-  - [ ] adding notes requires a notebook
-  - [ ] moving notes to a different notebook
-  - [ ] viewing notes by notebook
-- Use CSS to style new views
+  - [ ] fetching comments for an image or album
+  - [ ] adding or removing comments on images
+	-	[ ] sorting comments by popularity
+- [ ] create a show submission/comment history view for users
+- [ ] Style comments and history
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook,
-which has its own `Index` view.
+### Phase 7: Advance Homepage Frontend (1 day)
 
-### Phase 6: Tags (1.5 days)
+**objective:** Complete the homepage
 
-**Objective:** Notes can be tagged with multiple tags, and tags are searchable.
-
-- [ ] create `Tag` model and join table
-- build out API, Flux loop, and components for:
-  - [ ] fetching tags for notebook
-  - [ ] adding tags to notebook
-  - [ ] creating tags while adding to notebooks
-  - [ ] searching notebooks by tag
-- [ ] Style new elements
-
-### Phase 7: Allow Complex Styling in Notes (0.5 days)
-
-**objective:** Enable complex styling of notes.
-
-- [ ] Integrate `react-quill` (based on Quill.js).
-- [ ] Use Rails helpers to sanitize HTML before rendering.
-- [ ] Style the new Quill elements.
+- [ ] add the sidebar to the homepage with recent popular images (high net upvotes)
+- [ ] allow for infinite scroll through recent images.
+- [ ] finish styling homepage
 
 ### Phase 8: Styling Cleanup and Seeding (1 day)
 
 **objective:** Make the site feel more cohesive and awesome.
 
 - [ ] Get feedback on my UI from others
-- [ ] Refactor HTML classes & CSS rules
-- [ ] Add modals, transitions, and other styling flourishes.
+- [ ] Refactor views and CSS to make it more cohesive
+- [ ] Build React Authentication.
 
 ### Bonus Features (TBD)
-- [ ] Search through notes for blocks of text
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Set reminders on notes
-- [ ] Changelogs for Notes
+- [ ] Tags on images
+- [ ] A search function for both images by title and users by username.
+- [ ] Additional sorting methods for images, such as both recent and popular
 - [ ] Multiple sessions
 
 [phase-one]: ./docs/phases/phase1.md
