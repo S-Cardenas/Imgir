@@ -1,5 +1,9 @@
 {
   "name": "Imgir",
+	"engines": {
+		"node": "5.8.0",
+		"npm": "3.8.0"
+	},
   "version": "1.0.0",
   "description": "[Heroku link][heroku] **NB:** This should be a link to your production site",
   "main": "index.js",
@@ -17,7 +21,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"postinstall": "./node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
@@ -30,4 +35,5 @@
     "url": "https://github.com/hechlerp/Imgir/issues"
   },
   "homepage": "https://github.com/hechlerp/Imgir#readme"
+
 }
