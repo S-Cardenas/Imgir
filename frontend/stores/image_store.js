@@ -9,22 +9,45 @@ var resetImages = function (newImages) {
 	_images = newImages;
 };
 
+var replaceImage = function (image) {
+	var replaced = false;
+	_images = _images.map( function(el) {
+		if (el.id === image.id) {
+			replaced = true;
+			return image;
+		} else {
+			return el;
+		}
+	});
+	if (!replaced) {
+		_images.push(image);
+	}
+};
+
 ImageStore.__onDispatch =  function (payload) {
 	switch(payload.actionType) {
 		case ImageConstants.IMAGES_FETCHED:
-			_images = payload.images;
+			resetImages(payload.images);
 			this.__emitChange();
 			break;
 
-		case ImageConstants.IMAGE_ACKNOWLEDGED:
-			_images.push(payload.image);
+		case ImageConstants.IMAGE_RECEIVED:
+			replaceImage(payload.image);
 			this.__emitChange();
 			break;
+
+
 	}
 };
 
 ImageStore.all = function () {
 	return _images.slice(0);
+};
+
+ImageStore.find = function (id) {
+	return _images.find( function (el) {
+		return (el.id === parseInt(id));
+	});
 };
 
 

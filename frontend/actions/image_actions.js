@@ -10,13 +10,14 @@ var ImageActions = {
 		AppDispatcher.dispatch(fetch);
 	},
 
-	addNewImage: function (image) {
-		var creation = {
-			actionType: ImageConstants.IMAGE_ACKNOWLEDGED,
+	workWithImage: function (image) {
+		var newImage = {
+			actionType: ImageConstants.IMAGE_RECEIVED,
 			image: image
 		};
-		AppDispatcher.dispatch(creation);
-	}
+		AppDispatcher.dispatch(newImage);
+	},
+
 };
 
 module.exports = ImageActions;
