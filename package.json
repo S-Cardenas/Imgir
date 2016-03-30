@@ -1,9 +1,9 @@
 {
   "name": "Imgir",
-	"engines": {
-		"node": "5.8.0",
-		"npm": "3.8.0"
-	},
+  "engines": {
+    "node": "5.8.0",
+    "npm": "3.8.0"
+  },
   "version": "1.0.0",
   "description": "[Heroku link][heroku] **NB:** This should be a link to your production site",
   "main": "index.js",
@@ -14,6 +14,7 @@
     "babel-core": "^6.7.4",
     "babel-loader": "^6.2.4",
     "babel-preset-react": "^6.5.0",
+    "flux": "^2.1.1",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
     "react-router": "^2.0.1",
@@ -22,7 +23,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-		"postinstall": "./node_modules/.bin/webpack"
+    "postinstall": "./node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
@@ -35,5 +36,4 @@
     "url": "https://github.com/hechlerp/Imgir/issues"
   },
   "homepage": "https://github.com/hechlerp/Imgir#readme"
-
 }

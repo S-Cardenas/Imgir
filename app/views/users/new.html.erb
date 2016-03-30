@@ -1,5 +1,6 @@
-<h1>Sign Up</h1>
-<form action="/users" method="post">
+<form class= "signin-form" action="/users" method="post">
+	<h1>Sign Up</h1>
+	<h2>Join us!</h2>
 	<%= auth_token %>
 	<label>Your Future Username:
 		<br>
@@ -15,8 +16,9 @@
 	</label>
 <br>
 <br>
-	<input type="submit" value="Join the glorious empire">
+	<a class='account-signup-link' href="/users/new">Already have an account?</a>
+	<input class='signup' type="submit" value="Join the glorious empire">
+
 </form>
 <br>
 <br>
-<%= link_to "Already have an account?", new_session_url %>

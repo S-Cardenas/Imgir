@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 		if @user
 			@user.reset_session_token!
 			session[:session_token] = @user.session_token
-			redirect_to api_images_url
+			redirect_to root_url
 		else
 			flash[:errors] = ["Invalid username or password"]
 			redirect_to new_session_url

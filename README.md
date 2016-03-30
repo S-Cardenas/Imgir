@@ -12,8 +12,8 @@ and React.js. FresherNote allows users to:
 <!-- This is a Markdown checklist. Use it to keep track of your
 progress. Put an x between the brackets for a checkmark: [x] -->
 
-- [ ] Create an account
-- [ ] Log in / Log out
+- [X] Create an account
+- [X] Log in / Log out
 - [ ] Create, read, edit, and delete notes
 - [ ] Organize notes within Notebooks
 - [ ] Tag notes with multiple tags
@@ -38,22 +38,22 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 **Objective:** Functioning rails project with Authentication
 
-- [ ] create new project
-- [ ] create `User` model
-- [ ] authentication
-- [ ] user signup/signin pages
-- [ ] blank landing page after signin
-- [ ] other pages redirect until signin
+- [X] create new project
+- [X] create `User` model
+- [X] authentication
+- [X] user signup/signin pages
+- [X] blank landing page after signin
+- [X] other pages redirect until signin
 
 ### Phase 2: Image Model and API with basic index. (1.5 days)
 
 **Objective:** Images can be created, invidually viewed, have their options edited and be destroyed through the API and the homepage has current images.
 
-- [ ] create `Image` model
-- [ ] seed the database with a small amount of test data
+- [X] create `Image` model
+- [X] seed the database with a small amount of test data
 - [ ] CRUD API for images (`ImagesController`)
 - [ ] jBuilder views for images with a basic index.
-- [ ] setup Webpack & Flux scaffold
+- [X] setup Webpack & Flux scaffold
 - [ ] test making images using the API
 - [ ] setup index to display images without titles that link to their show pages
 ### Phase 3: Add Albums (0.5 days)
