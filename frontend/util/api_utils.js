@@ -43,6 +43,21 @@ var ImageUtils = {
 			}
 
 		});
+	},
+
+	editImage: function (e, id) {
+		$.ajax({
+			type: 'PATCH',
+			url: "api/images/" + id,
+			data: {image: {title: e[0].value, description: e[1].value}},
+			dataType: 'json',
+			success: function (data) {
+				ImageActions.workWithImage(data);
+			},
+			error: function () {
+				console.log("Image failed to update");
+			}
+		});
 	}
 
 

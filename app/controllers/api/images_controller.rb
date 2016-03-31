@@ -27,6 +27,12 @@ class Api::ImagesController < ApplicationController
 	end
 
 	def update
+		@image = Image.find(params[:id])
+		if @image.update_attributes(image_params)
+			render :show
+		else
+			raise "Image did not update"
+		end
 	end
 
 	def edit

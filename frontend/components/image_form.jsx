@@ -8,9 +8,10 @@ var ImageForm = React.createClass({
 	executeSubmit: function (e) {
 		e.preventDefault();
 		ImageUtils.createImage();
-		this.context.router.push('/');
+		this.context.router.push('/#/images');
 	},
 	render: function() {
+		
 		return (
 			<form  onSubmit={this.executeSubmit}>
 				<input type='submit' value='Upload'></input>

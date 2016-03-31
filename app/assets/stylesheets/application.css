@@ -142,7 +142,7 @@ body {
 	border-bottom: 1px solid #1f478c;
 }
 
-/*IMAGEINDEXSTUFF*/
+/*IMAGE INDEX STUFF*/
 .image-index {
 	position: relative;
 	margin: auto;
@@ -165,4 +165,129 @@ body {
 
 .image-index-item:hover {
 	border: 1px solid #bec900;
+}
+/*IMAGE SHOW AND EDIT*/
+.image-show {
+	position: relative;
+	margin: auto;
+	font-size: 36px;
+	width: 500px;
+	height: 500px;
+	color: #fff;
+	border: 1px solid #999;
+	border-radius: 10px;
+	outline: 1px solid #121211;
+	outline-offset: -3px;
+}
+
+.image-details-bar {
+	display: none;
+	position: absolute;
+	border: 1px solid #fff;
+	top: 83%;
+	width: 458px;
+	float: left;
+	font-size: 16px;
+	padding: 20px;
+}
+.image-details-bar > .image-details{
+	float: left;
+	width: 300px;
+}
+.image-details-bar > a {
+	color: #4E76C9;
+	float:right;
+	position: absolute;
+	top: 45%;
+	left: 60%;
+	padding: 0;
+}
+.image-show:hover > .image-details-bar{
+	display: block;
+	opacity: 1;
+	background-color: rgba(0,0,0,.6);
+}
+
+.image-edit {
+	position: relative;
+	background: #2B2B2B;
+	display: block;
+	left: 40%;
+	top: 100px;
+	border: 2px solid #444442;
+	border-radius: 6px;
+	width: 300px;
+	z-index: 3;
+
+}
+
+.image-edit-header {
+	width: 298px;
+	height: 40px;
+	float: left;
+	background: #232323;
+	margin: 0;
+	border-bottom: 1px solid #000;
+}
+
+.image-edit-header > h3 {
+	color: #ddddd1;
+	position: absolute;
+	padding: 10px;
+	top: -20px;
+	font-weight: 700;
+	text-shadow: 1px 1px 1px #222;
+	letter-spacing: 1px;
+}
+
+.image-edit-form {
+	padding: 10px;
+	margin-top: 30px;
+	font-size: 14px;
+	padding-top: 5px;
+}
+
+.image-edit-input {
+	width: 258px;
+	background: #121211;
+	font-size: 14px;
+	border: 1px solid #999;
+	border-radius: 3px;
+	padding: 5px 0;
+	margin: 10px;
+	font-weight: 400;
+}
+
+.image-edit-input::selection {
+	background: #fff;
+}
+
+.image-edit-form > textarea {
+	color: #ddddd1;
+	height: 60px;
+
+}
+
+.image-edit-submit {
+	font-weight: 700;
+	font-size: inherit;
+	margin: 10px;
+	border: 2px solid #444442;
+	border-radius: 4px;
+	padding: 5px 15px;
+	background: #121211;
+}
+
+.image-edit-submit:hover {
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#2b2b2b),color-stop(0%,#444442),color-stop(100%,#121211));
+}
+
+.modal {
+	background-color: rgba(0,0,0,0.9);
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 2;
 }

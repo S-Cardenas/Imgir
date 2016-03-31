@@ -31,8 +31,9 @@ var routes = (
 		<Route path= "/" component={Imgir}>
 			<Route path= "images" component={ImageIndex} />
 			<Route path= "images/new" component={ImageForm} />
-			<Route path= "images/:id" component={ImageShow} />
-			<Route path= "images/:id/edit" component={ImageEditForm}/>
+			<Route path= "images/:id" component={ImageShow}>
+				<Route path= "edit" component={ImageEditForm}/>
+			</Route>
 		</Route>
 );
 
