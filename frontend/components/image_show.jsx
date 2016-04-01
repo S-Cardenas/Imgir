@@ -3,6 +3,8 @@ var ImageUtils = require('../util/api_utils');
 var ImageStore = require('../stores/image_store');
 var ImageEditForm = require('./image_edit_form');
 
+var Link = require('react-router').Link;
+
 var ImageShow = React.createClass({
 	getInitialState: function() {
 		return { image: ImageStore.find(this.props.params.id)};
@@ -25,7 +27,7 @@ var ImageShow = React.createClass({
 		var image = this.state.image;
 		if (image) {
 			var uploader = (image.user ? image.user.username : "");
-			var EditTitleUrl = "#/images/" + image.id + "/edit";
+			var EditTitleUrl = "/images/" + image.id + "/edit";
 			return (
 				<div>
 					{this.props.children}
@@ -33,12 +35,12 @@ var ImageShow = React.createClass({
 						<div>Image Id: {image.id}</div>
 						<div>Uploader: {uploader}</div>
 						<div className='image-details-bar group'>
-							<div className='image-details'>
-								<div>Title: {image.title}</div>
-								<div>Description: {image.description}</div>
-							</div>
+							<ul className='image-details'>
+								<li>Title: {image.title}</li>
+								<li>Description: {image.description}</li>
+							</ul>
 
-							<a href={EditTitleUrl}>Edit Title/Description</a>
+							<Link to={EditTitleUrl}>Edit Title/Description</Link>
 						</div>
 					</div>
 				</div>

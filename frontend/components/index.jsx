@@ -1,9 +1,9 @@
 var React = require('react');
 var ImageUtils = require('../util/api_utils');
 var ImageStore = require('../stores/image_store');
+var Link = require('react-router').Link;
 
 var React = require('react');
-var PropTypes = React.PropTypes;
 
 var ImageIndex = React.createClass({
 	getInitialState: function() {
@@ -26,9 +26,9 @@ var ImageIndex = React.createClass({
 	render: function() {
 		var images = this.state.images.map( function (image) {
 			var uploader = (image.user ? image.user.username : "");
-			var showUrl = "#/images/" + image.id;
+			var showUrl = "/images/" + image.id;
 			return(
-				<a href={showUrl} key={image.id}>
+				<Link to={showUrl} key={image.id}>
 					<div className='image-index-item'>
 						<div>Image Id: {image.id}</div>
 						<div>Uploader: {uploader}</div>
@@ -36,7 +36,7 @@ var ImageIndex = React.createClass({
 						<div>Description: {image.description}</div>
 
 					</div>
-				</a>
+				</Link>
 			);
 		});
 		return (

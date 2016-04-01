@@ -12,6 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'pg_search'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -23,6 +24,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem "paperclip", '5.0.0.beta1'
+
+gem 'figaro'
+
+gem 'aws-sdk', '>= 2.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

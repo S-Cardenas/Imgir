@@ -2,21 +2,20 @@
 	<h1>Sign Up</h1>
 	<h2>Join us!</h2>
 	<%= auth_token %>
-	<label>Your Future Username:
-		<br>
-		<input type="text" name="user[username]" value="">
-	</label>
-	<br>
-	<br>
-	<label>Your Future Password:
-		<br>
-		<input type="password" name="user[password]" value="">
-		<br>
+		<input type="text"
+		  name="user[username]"
+			placeholder="Your Future Username"
+			id="username">
+
+		<input
+			type="password"
+			name="user[password]"
+			placeholder="Your Future Password"
+			id="password">
 		(Be warned, it must be at least 7 characters long!)
-	</label>
 <br>
 <br>
-	<a class='account-signup-link' href="/users/new">Already have an account?</a>
+	<a class='account-signup-link' href="/#/login">Already have an account?</a>
 	<input class='signup' type="submit" value="Join the glorious empire">
 
 </form>

@@ -6,11 +6,14 @@ var root = document.getElementById("content");
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
-var hashHistory = ReactRouter.hashHistory;
+var browserHistory = ReactRouter.browserHistory;
+var Link = ReactRouter.Link;
 
 var SessionStore = require("./stores/session_store");
 var LoginForm = require("./components/login_form.jsx");
 var SessionUtil = require('./util/session_utils');
+
+var NavBar = require('./components/navbar');
 
 var ImageForm = require('./components/image_form');
 var ImageIndex = require('./components/index');
@@ -20,11 +23,13 @@ var ImageEditForm = require('./components/image_edit_form');
 
 
 
+
 var Imgir = React.createClass({
 
 	render: function() {
 		return (
 			<div>
+				< NavBar />
 				<h1>Imgir: Rise of Gir</h1>
 				<br></br>
 				{this.props.children}
@@ -38,7 +43,7 @@ window.SessionUtil = SessionUtil;
 
 $(document).ready(function () {
 	ReactDOM.render(
-		<Router history={hashHistory}>
+		<Router history={browserHistory}>
 			<Route path= "/" component={Imgir}>
 				<Route path= "images" component={ImageIndex} onEnter={_requireLoggedIn} />
 				<Route path= "images/new" component={ImageForm} />

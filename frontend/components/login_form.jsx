@@ -1,5 +1,6 @@
 var React = require('react');
 var SessionUtil = require('../util/session_utils');
+var Link = require('react-router').Link;
 
 var LoginForm = React.createClass({
 	contextTypes : {
@@ -18,15 +19,21 @@ var LoginForm = React.createClass({
 			<div>
 				<h1>Looking to Sign In?</h1>
 				<h2>Doom doom doom doom...</h2>
-				<form onSubmit={this.executeSubmit}>
-					<label htmlFor="username">Username:</label>
-					<input onChange={this.updateUsername} type="text" value={this.state.username} />
+				<form className='signin-form' onSubmit={this.executeSubmit}>
 
-				<label htmlFor="password">Password:</label>
-				<input onChange={this.updatePassword} type="password" value={this.state.password} />
-
-			<button>Submit</button>
-			</form>
+					<input onChange={this.updateUsername}
+						type="text"
+				 		value={this.state.username}
+						placeholder='Username' />
+					<input onChange={this.updatePassword}
+						type="password"
+						value={this.state.password}
+						placeholder='Password' />
+					<Link className='account-signup-link'
+						to="/users/new">Need an account?
+					</Link>
+					<button className='signin-submit'>Sign In</button>
+				</form>
 
 			</div>
 		);

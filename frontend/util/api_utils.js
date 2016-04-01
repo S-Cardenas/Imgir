@@ -4,7 +4,7 @@ var ImageUtils = {
 	fetchImages: function () {
 		$.ajax({
 			type: 'GET',
-			url: 'api/images',
+			url: '/api/images',
 			dataType: 'json',
 			success: function (data) {
 				ImageActions.getImages(data);
@@ -18,7 +18,7 @@ var ImageUtils = {
 	fetchOneImage: function (id) {
 		$.ajax({
 			type: 'GET',
-			url: 'api/images/' + id,
+			url: '/api/images/' + id,
 			dataType: 'json',
 			success: function (data) {
 				ImageActions.workWithImage(data);
@@ -33,7 +33,7 @@ var ImageUtils = {
 	createImage: function () {
 		$.ajax({
 			type: 'POST',
-			url: 'api/images',
+			url: '/api/images',
 			dataType: 'json',
 			success: function (data) {
 				ImageActions.workWithImage(data);
@@ -48,7 +48,7 @@ var ImageUtils = {
 	editImage: function (e, id) {
 		$.ajax({
 			type: 'PATCH',
-			url: "api/images/" + id,
+			url: "/api/images/" + id,
 			data: {image: {title: e[0].value, description: e[1].value}},
 			dataType: 'json',
 			success: function (data) {

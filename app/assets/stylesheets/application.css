@@ -52,6 +52,15 @@ button {
   cursor: pointer;
 }
 
+input {
+	border: 1px solid #333;
+	border-radius: 5px;
+}
+
+input:focus {
+	border: 1px solid #665d32;
+}
+
 body {
 	background: #000;
 	color: #fff;
@@ -64,7 +73,7 @@ body {
 }
 
 /*HEADER-NAV*/
-.signin {
+.header-nav {
 	width: 100%;
 	background: #2b2b2b;
 	color: #fff;
@@ -72,15 +81,73 @@ body {
 	float: left;
 }
 
-.signin > li {
+.nav-left{
+	margin: 0 100px;
+	float:left;
+}
+
+
+.logo {
+	float: left;
+	padding: 20px;
+}
+
+.logo:hover {
+	background: #444442;
+}
+
+.new-image-button-container {
+	float: right;
+	padding: 20px;
+}
+
+.new-image {
+	padding: 3px 10px;
+	background: linear-gradient(to bottom,#3274e5 0,#2d67cc 100%);
+	border-radius: 5px;
+}
+
+.signin {
+	margin: 10px 100px;
 	float: right;
 	padding: 10px 20px;
 }
+
+.nav-account-options {
+	display: none;
+	position: absolute;
+	margin-top: 10px;
+	white-space: nowrap;
+	color: #000;
+	background: #fff;
+	font-size: 14px;
+	right:110px;
+	width: 150px;
+	overflow: hidden;
+	z-index: 9000;
+	border-top: 3px solid #85bf25;
+}
+
+.signin > a {
+	padding: 16px 10px;
+	font-size: 14px;
+	color: #ddddd1;
+}
+
+.nav-account-options > li {
+	padding: 10px;
+}
+
+.signin:hover > .nav-account-options {
+	display: block;
+}
 /*Signin*/
 .signin-form {
+	width: 400px;
 	display: block;
 	margin: 20px;
 	padding: 10px 20px;
+	border: ;
 	background: #2b2b2b;
 }
 .signin-form > h1 {
@@ -93,17 +160,21 @@ body {
 	font-size: 14px;
 	padding-bottom: 20px;
 }
-.signin-form > label {
+
+.signin-form > input {
 	color: #666;
-}
-.signin-form > label > input {
 	display: block;
 	color: #fff;
 	background: #212121;
+
 	font-size: 12px;
-	padding: 5px;
+	margin-bottom: 10px;
+	padding: 5px 10px;
+	outline: none;
 }
-.signin-form > input {
+
+
+.signin-submit {
 	background: linear-gradient(to bottom,#74b20e 0,#5b8c0b 100%);
 	border-top: 1px solid #a6ee32;
 	border-bottom: 1px solid #426608;
@@ -111,7 +182,7 @@ body {
 	padding: 8px 20px;
 }
 
-.signin-form > input:hover {
+.signin-submit:hover {
 	background: linear-gradient(to bottom,#7cbf0f 0,#63990c 100%);
 }
 .account-signup-link {
@@ -184,15 +255,20 @@ body {
 	display: none;
 	position: absolute;
 	border: 1px solid #fff;
-	top: 83%;
+	bottom: 0;
 	width: 458px;
 	float: left;
 	font-size: 16px;
 	padding: 20px;
 }
+
+.image-details > li {
+	margin: 5px;
+}
+
 .image-details-bar > .image-details{
 	float: left;
-	width: 300px;
+	width: 250px;
 }
 .image-details-bar > a {
 	color: #4E76C9;
@@ -256,10 +332,11 @@ body {
 	padding: 5px 0;
 	margin: 10px;
 	font-weight: 400;
+	outline: none;
 }
 
-.image-edit-input::selection {
-	background: #fff;
+.image-edit-input:focus {
+	border: 1px solid #665d32;
 }
 
 .image-edit-form > textarea {

@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 		resources :images
 		resource :session, only: [:new, :show, :create, :destroy]
 	end
+
+	get "*unmatched_route", to: "static_pages#root"
 end

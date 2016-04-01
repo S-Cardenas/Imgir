@@ -15,7 +15,7 @@ var imageEditForm = React.createClass({
 	},
 
 	pushURL: function () {
-		return ('images/' + this.props.params.id);
+		return ('/images/' + this.props.params.id);
 	},
 
 	executeSubmit: function (e) {
