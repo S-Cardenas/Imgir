@@ -147,7 +147,6 @@ body {
 	display: block;
 	margin: 20px;
 	padding: 10px 20px;
-	border: ;
 	background: #2b2b2b;
 }
 .signin-form > h1 {
@@ -218,11 +217,11 @@ body {
 	position: relative;
 	margin: auto;
 	width: 900px;
-	background: #2b2b2b
+	background: #2b2b2b;
 }
 
 .image-index-item {
-	padding: 10px;
+	overflow: hidden;
 	float:left;
 	color: #fff;
 	height: 190px;
@@ -232,10 +231,25 @@ body {
 	margin: 5px;
 	outline: 1px solid #121211;
 	outline-offset: -2px;
+	background: #fff;
+}
+
+
+.image-index-item-thumb{
+	width: 190px;
+}
+
+.image-index-title {
+	display: none;
+	bottom: -15px;
+	position: absolute;
 }
 
 .image-index-item:hover {
 	border: 1px solid #bec900;
+}
+.image-index-item:hover > .image-index-title {
+	display: block;
 }
 /*IMAGE SHOW AND EDIT*/
 .image-show {
@@ -245,21 +259,17 @@ body {
 	width: 500px;
 	height: 500px;
 	color: #fff;
-	border: 1px solid #999;
-	border-radius: 10px;
-	outline: 1px solid #121211;
-	outline-offset: -3px;
 }
 
 .image-details-bar {
 	display: none;
 	position: absolute;
 	border: 1px solid #fff;
-	bottom: 0;
 	width: 458px;
 	float: left;
 	font-size: 16px;
 	padding: 20px;
+	bottom: 0;
 }
 
 .image-details > li {
@@ -278,7 +288,13 @@ body {
 	left: 60%;
 	padding: 0;
 }
-.image-show:hover > .image-details-bar{
+
+.image-show-image {
+	position: relative;
+	background: #fff;
+}
+
+.image-show-image:hover > .image-details-bar{
 	display: block;
 	opacity: 1;
 	background-color: rgba(0,0,0,.6);

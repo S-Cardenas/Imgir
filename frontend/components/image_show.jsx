@@ -34,13 +34,16 @@ var ImageShow = React.createClass({
 					<div className='image-show'>
 						<div>Image Id: {image.id}</div>
 						<div>Uploader: {uploader}</div>
-						<div className='image-details-bar group'>
-							<ul className='image-details'>
-								<li>Title: {image.title}</li>
-								<li>Description: {image.description}</li>
-							</ul>
+						<div className='image-show-image'>
+							<img src={image.image_url}></img>
+							<div className='image-details-bar group'>
+								<ul className='image-details'>
+									<li>Title: {image.title}</li>
+									<li>Description: {image.description}</li>
+								</ul>
 
-							<Link to={EditTitleUrl}>Edit Title/Description</Link>
+								<Link to={EditTitleUrl}>Edit Title/Description</Link>
+							</div>
 						</div>
 					</div>
 				</div>
