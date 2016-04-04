@@ -17,7 +17,7 @@ class Api::ImagesController < ApplicationController
 	end
 
 	def create
-		@image = Image.new
+		@image = Image.new(image_params)
 		@image.user_id = current_user.id
 		if @image.save
 			render :show
@@ -44,6 +44,6 @@ class Api::ImagesController < ApplicationController
 	private
 
 	def image_params
-		params.require(:image).permit(:title, :description, :private)
+		params.require(:image).permit(:title, :description, :private, :img)
 	end
 end

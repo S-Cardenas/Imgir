@@ -3,6 +3,7 @@ var SessionStore = require('../stores/session_store');
 var SessionUtil = require('../util/session_utils');
 var Link = require('react-router').Link;
 var ImageForm = require('./image_form');
+var ModalAction = require('../actions/modal_action');
 
 var Navbar = React.createClass({
 	getInitialState: function() {
@@ -24,6 +25,10 @@ var Navbar = React.createClass({
 
 	componentWillUnmount: function() {
 		this.sessionStoreToken.remove();
+	},
+
+	handleClickImageForm: function (e) {
+		ModalAction.setModal(<ImageForm />);
 	},
 
 	render: function() {
@@ -58,10 +63,15 @@ var Navbar = React.createClass({
 		return (
 			<div className='header-nav group'>
 				<div className='nav-left group'>
-					<Link className='logo' to='/images'>imgir</Link>
+					<Link  to='/images'>
+						<img className='logo' src='/imgir_logo.png'>
+
+						</img>
+
+						</Link>
 
 					<div className='new-image-button-container'>
-						<Link className='new-image' to='/images/new'>upload images</Link>
+						<button className='new-image' onClick={this.handleClickImageForm}>upload images</button>
 					</div>
 				</div>
 				{navAccount.call(this)}

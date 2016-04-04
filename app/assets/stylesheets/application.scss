@@ -82,14 +82,18 @@ body {
 }
 
 .nav-left{
-	margin: 0 100px;
+	margin: 0 130px 0 80px;
 	float:left;
 }
 
 
 .logo {
+	display: block;
 	float: left;
-	padding: 20px;
+	height: 50px;
+	width: auto;
+	padding: 10px;
+
 }
 
 .logo:hover {
@@ -97,20 +101,22 @@ body {
 }
 
 .new-image-button-container {
-	float: right;
-	padding: 20px;
+	display: block;
+	width: 400px;
 }
 
 .new-image {
-	padding: 3px 10px;
+	padding: 5px 13px;
+	margin-left: 60px;
+	margin-top: 20px;
 	background: linear-gradient(to bottom,#3274e5 0,#2d67cc 100%);
 	border-radius: 5px;
 }
 
 .signin {
-	margin: 10px 100px;
+	margin: 0 100px;
 	float: right;
-	padding: 10px 20px;
+	padding: 25px;
 }
 
 .nav-account-options {
@@ -141,6 +147,7 @@ body {
 .signin:hover > .nav-account-options {
 	display: block;
 }
+
 /*Signin*/
 .signin-form {
 	width: 400px;
@@ -172,7 +179,6 @@ body {
 	outline: none;
 }
 
-
 .signin-submit {
 	background: linear-gradient(to bottom,#74b20e 0,#5b8c0b 100%);
 	border-top: 1px solid #a6ee32;
@@ -195,7 +201,7 @@ body {
 	color: #fff;
 }
 
-.signin-form > input.signup {
+.signup {
 	display: block;
 	background: #3274e5;
 	background: linear-gradient(to bottom,#3274e5 0,#2a61bf 100%);
@@ -205,48 +211,123 @@ body {
 	padding: 8px 20px;
 }
 
-.signin-form > input.signup:hover {
+.signup:hover {
 	background: #357bf2;
 	background: linear-gradient(to bottom,#357bf2 0,#306ed9 100%);
 	border-top: 1px solid #6ba1ff;
 	border-bottom: 1px solid #1f478c;
 }
+/*IMAGE UPLOAD*/
+
+.image-upload-form {
+	background: #2b2b2b;
+	position: absolute;
+	left: 35%;
+	top: 20%;
+	height: 400px;
+	width: 500px;
+	border: 2px solid #444442;
+	border-radius: 6px;
+}
+
+.image-upload-form > h2 {
+	margin: auto;
+	font-weight: 400;
+	padding: 20px;;
+	border-bottom: 1px solid #000;
+}
+
+.image-upload-button {
+	background: linear-gradient(to bottom,#2b2b2b 0,#444442 0,#121211 100%);
+	padding: 162px 151px;
+	top: 162px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	position: relative;
+	cursor: pointer;
+}
+
+.actual-upload {
+	position: absolute;
+	top: -2000px;
+}
+
+.image-upload-button:focus {
+	background: linear-gradient(to bottom,#2b2b2b 0,#121211 100%);
+}
+
+.image-upload-button:focus:hover {
+	background: linear-gradient(to bottom,#2b2b2b 0,#444442 0,#121211 100%);
+}
+
+.preview-and-submit > button {
+	padding: 20px;
+	z-index: 9000;
+	position: relative;
+}
+
+
+
+.preview-image-thumb {
+	background: #fff;
+	position: relative;;
+	width: 100px;
+	height: 100px;
+	margin: auto;
+}
 
 /*IMAGE INDEX STUFF*/
 .image-index {
-	position: relative;
 	margin: auto;
-	width: 900px;
+	width: 1020px;
 	background: #2b2b2b;
 }
 
 .image-index-item {
-	overflow: hidden;
 	float:left;
 	color: #fff;
-	height: 190px;
-	width: 190px;
-	border: 1px solid #999;
-	border-radius: 5px;
-	margin: 5px;
+	height: 180px;
+	width: 180px;
+	border: 2px solid #999;
+	margin: 10px;
 	outline: 1px solid #121211;
 	outline-offset: -2px;
 	background: #fff;
+	position: relative;
 }
 
 
-.image-index-item-thumb{
-	width: 190px;
+.image-index-item-wide{
+	height:180px;
+	width: 100%;
 }
 
+.image-index-item-tall{
+	width: 180px;
+	height: 100%;
+}
+
+.index-no-overflow {
+	height: 180px;
+	width: 180px;
+	overflow: hidden;
+
+}
 .image-index-title {
 	display: none;
-	bottom: -15px;
+	background: #000;
+	height: auto;
+	width: 200px;
+	top: 101%;
+	right: -25px;
 	position: absolute;
+	z-index: 9000;
+	padding: 20px;
+	border: 2px solid #444442;
 }
 
 .image-index-item:hover {
-	border: 1px solid #bec900;
+	border: 2px solid #bec900;
 }
 .image-index-item:hover > .image-index-title {
 	display: block;

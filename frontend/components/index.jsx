@@ -2,6 +2,7 @@ var React = require('react');
 var ImageUtils = require('../util/api_utils');
 var ImageStore = require('../stores/image_store');
 var Link = require('react-router').Link;
+var ImageIndexItem = require('./image_index_item');
 
 var React = require('react');
 
@@ -30,7 +31,10 @@ var ImageIndex = React.createClass({
 			return(
 					<div className='image-index-item' key={image.id}>
 						<div className='image-index-title'>Title: {image.title}</div>
-						<Link className='image-index-item-thumb' to={showUrl}><img src={image.image_url}></img> </Link>
+						<div className='index-no-overflow'>
+							<Link to={showUrl}>< ImageIndexItem image={image.image_url} /> </Link>
+
+						</div>
 					</div>
 			);
 		});

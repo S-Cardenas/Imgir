@@ -30,10 +30,13 @@ var ImageUtils = {
 		});
 	},
 
-	createImage: function () {
+	createImage: function (formData) {
 		$.ajax({
 			type: 'POST',
 			url: '/api/images',
+			processData: false,
+			contentType: false,
+			data: formData,
 			dataType: 'json',
 			success: function (data) {
 				ImageActions.workWithImage(data);
