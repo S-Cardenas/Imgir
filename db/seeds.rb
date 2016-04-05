@@ -4,6 +4,7 @@ user1 = User.create!(username: "Stephawn", password: "1234567")
 user2 = User.create!(username: "LeiAufBro", password: "1234567")
 user3 = User.create!(username: "Conneither", password: "1234567")
 user4 = User.create!(username: "GothamsHero", password: "1234567")
+user5 = User.create!(username: "TheBaws25", password: "1234567")
 user9000 = User.create!(username: "Guest", password: "1234567")
 
 Image.destroy_all
@@ -19,3 +20,5 @@ image4 = Image.create!(title:"GIR and Zim share a laugh", user_id: user4.id, pri
 image5 = Image.create!(title:"Serious mode GIR", user_id: user2.id, private: false, description: "GIR as he looks when he gets serious about something. Often not to much effect.", img: File.open("app/assets/images/Duty_Mode_GIR.png"))
 
 image6 = Image.create!(title:"Dib", user_id: user9000.id, private: false, description: "The hero of our times. Who could I be, uploading this? You'll never find out, Zim!", img: File.open("app/assets/images/Dib.jpg"))
+
+image7 = Image.create!(title:"Advanced", user_id: user5.id, private: false, description: "The Almighty Tallest simply have a better understanding of things than some pleb like Zim.", img: File.open("app/assets/images/almighty_tallest"))

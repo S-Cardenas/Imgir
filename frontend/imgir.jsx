@@ -55,6 +55,8 @@ var Imgir = React.createClass({
 });
 
 
+
+
 $(document).ready(function () {
 	ReactDOM.render(
 		<Router history={browserHistory}>
@@ -62,7 +64,8 @@ $(document).ready(function () {
 				<Route path= "images" component={ImageIndex} onEnter={_requireLoggedIn} />
 				<Route path= "images/new" component={ImageForm} />
 				<Route path= "images/:id" component={ImageShow}>
-					<Route path= "edit" component={ImageEditForm} />
+					<Route path= "edit"	component={ImageEditForm}
+						/>
 				</Route>
 				<Route path= "users/new" component={SignupForm} />
 				<Route path="login" component={LoginForm}/>

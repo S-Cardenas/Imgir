@@ -29,13 +29,13 @@ var ImageIndex = React.createClass({
 			var uploader = (image.user ? image.user.username : "");
 			var showUrl = "/images/" + image.id;
 			return(
-					<div className='image-index-item' key={image.id}>
-						<div className='image-index-title'>Title: {image.title}</div>
-						<div className='index-no-overflow'>
-							<Link to={showUrl}>< ImageIndexItem image={image.image_url} /> </Link>
+				<div className='image-index-item' key={image.id}>
+					<div className='image-index-title'>{image.title}</div>
+					<div className='index-no-overflow'>
+						<Link to={showUrl}>< ImageIndexItem image={image.image_url} /> </Link>
 
-						</div>
 					</div>
+				</div>
 			);
 		});
 		return (

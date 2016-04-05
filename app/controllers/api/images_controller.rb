@@ -1,5 +1,4 @@
 class Api::ImagesController < ApplicationController
-	# before_action :require_logged_in
 
 	def index
 		@images = Image.all
@@ -17,21 +16,20 @@ class Api::ImagesController < ApplicationController
 	end
 
 	def create
-		@image = Image.new(image_params)
-		@image.user_id = current_user.id
+		@image = current_user.images.new(image_params)
 		if @image.save
 			render :show
 		else
-			raise "That's not an image, you dingus."
+			render json: {errors: @images.errors.full_messages}, status: 422
 		end
 	end
 
 	def update
-		@image = Image.find(params[:id])
-		if @image.update_attributes(image_params)
+		@image = current_user.images.find(params[:id])
+		if @image.update(image_params)
 			render :show
 		else
-			raise "Image did not update"
+			render json: {errors: @image.errors.full_messages}, status: 422
 		end
 	end
 
