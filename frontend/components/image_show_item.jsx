@@ -16,10 +16,12 @@ var ImageShowItem = React.createClass({
 
 	determineClassName: function () {
 		var node = ReactDOM.findDOMNode(this.refs.image);
-		if (node.height > node.width) {
-			this.setState({classname: 'image-show-item-tall'});
-		} else {
-			this.setState({classname: 'image-show-item-wide'});
+		if (node.height > 600 || node.width > 500) {
+			if ((node.height/node.width) >= 600/500) {
+				this.setState({classname: 'image-show-item-tall'});
+			} else {
+				this.setState({classname: 'image-show-item-wide'});
+			}
 		}
 	},
 

@@ -1,7 +1,7 @@
 class Api::ImagesController < ApplicationController
 
 	def index
-		@images = Image.all
+		@images = Image.all.where("private = false OR user_id = ?", current_user.id)
 		render :index
 	end
 
@@ -25,6 +25,7 @@ class Api::ImagesController < ApplicationController
 	end
 
 	def update
+		debugger;
 		@image = current_user.images.find(params[:id])
 		if @image.update(image_params)
 			render :show
@@ -37,6 +38,12 @@ class Api::ImagesController < ApplicationController
 	end
 
 	def destroy
+		@image = current_user.images.find(params[:id])
+		if @image.destroy
+			render :index
+		else
+			render json: {errors: @image.errors.full_messages}, status: 422
+		end
 	end
 
 	private

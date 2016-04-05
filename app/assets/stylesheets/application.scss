@@ -205,14 +205,14 @@ body {
 	background: #3274e5;
 	background: linear-gradient(to bottom,#3274e5 0,#2a61bf 100%);
 
+	border-top: 1px solid #6ba1ff;
+	border-bottom: 1px solid #1f478c;
 	padding: 8px 20px;
 }
 
 .signup:hover {
 	background: #357bf2;
 	background: linear-gradient(to bottom,#357bf2 0,#306ed9 100%);
-	border-top: 1px solid #6ba1ff;
-	border-bottom: 1px solid #1f478c;
 }
 
 .guest-login {
@@ -392,13 +392,14 @@ body {
 	display: block;
 	width: 500px;
 	float: left;
-	height: 600px;
+	height: 660px;
 }
 
 .image-show-image-user {
 	top: 50%;
 	transform: translateY(-50%);
 	position: relative;
+	margin: 5px
 }
 
 .image-show-image-user > img {
@@ -412,20 +413,41 @@ body {
 	float:right;
 	background: #2B2B2B;
 	width: 290px;
-	height: 602px;
+	height: 662px;
+	text-align: center;
 }
 
 .image-show-privacy {
 	font-size: 16px;
 	background: linear-gradient(to bottom,#74b20e 0,#5b8c0b 100%);
 	padding: 7px 20px;
+	float: left;
+	position: relative;
 	top: 20px;
 	width: 200px;
 	left: 10%;
-	position: relative;
 	border-top: 1px solid #a6ee32;
 	border-bottom: 1px solid #426608;
 	border-radius: 2px;
+}
+
+.delete-image-button {
+	top: 80px;
+	float: left;
+	width: 200px;
+	font-size: 16px;
+	padding: 7px 20px;
+	left: 10%;
+	position: relative;
+	background: linear-gradient(to bottom,#3274e5 0,#2a61bf 100%);
+	border-top: 1px solid #6ba1ff;
+	border-bottom: 1px solid #1f478c;
+	border-radius: 2px;
+}
+
+.delete-image-button:hover {
+	background: #357bf2;
+	background: linear-gradient(to bottom,#357bf2 0,#306ed9 100%);
 }
 
 .image-show-privacy:hover {
@@ -435,7 +457,7 @@ body {
 }
 
 .image-show-image {
-	max-height: 600px;
+	max-height: 500px;
 	max-width: 600px;
 	margin: auto;
 }
@@ -443,12 +465,15 @@ body {
 .image-show-image > img {
 	background: #fff;
 	top: 50%;
+	width: inherit;
+	max-height: 500px;
 	position: relative;
 	left: 50%;
 	transform: translateX(-50%);
 }
 
 .image-show-item-tall {
+	background: #fff;
 	width: auto;
 	max-height: 600px;
 
@@ -456,7 +481,8 @@ body {
 
 .image-show-item-wide {
 	height: auto;
-	max-width: 600px
+	background: #fff;
+	max-width: 500px
 }
 
 .image-details-bar {

@@ -61,6 +61,35 @@ var ImageUtils = {
 				console.log("Image failed to update");
 			}
 		});
+	},
+
+	updatePrivacy: function (e, id) {
+		$.ajax({
+			type: 'PATCH',
+			url: "/api/images/" + id,
+			data: {image: {private: false}},
+			dataType: 'json',
+			success: function (data) {
+				ImageActions.workWithImage(data);
+			},
+			error: function () {
+				console.log("Image failed to update");
+			}
+		});
+	},
+
+	deleteImage: function (id) {
+		$.ajax({
+			type: 'DELETE',
+			url: "/api/images/" + id,
+			dataType: 'json',
+			success: function (data) {
+				ImageActions.deleteImage(data);
+			},
+			error: function () {
+				console.log("Image failed to delete");
+			}
+		});
 	}
 
 

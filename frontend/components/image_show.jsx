@@ -9,6 +9,10 @@ var ImageShowItem = require('./image_show_item');
 var Link = require('react-router').Link;
 
 var ImageShow = React.createClass({
+	contextTypes: {
+		router: React.PropTypes.object.isRequired
+	},
+
 	getInitialState: function() {
 		return { image: ImageStore.find(this.props.params.id)};
 	},
@@ -26,12 +30,24 @@ var ImageShow = React.createClass({
 		this.setState({ image: ImageStore.find(this.props.params.id)});
 	},
 
+	executeDelete: function (e) {
+		e.preventDefault();
+		ImageUtils.deleteImage(this.props.params.id);
+		this.context.router.push("/images");
+	},
+
+	makePublic: function (e) {
+		e.preventDefault();
+		ImageUtils.updatePrivacy(e, this.props.params.id);
+		this.context.router.push("/images");
+	},
+
 	render: function() {
 		var image = this.state.image;
 		if (image) {
 			if (image.user.id === SessionStore.currentUser().id) {
 				var EditTitleUrl = "/images/" + image.id + "/edit";
-				var privacy = (image.private ?  <Link className='image-show-privacy' to="#">Share with the community</Link> : <div /> );
+				var privacy = (image.private ?  <Link className='image-show-privacy' to="#" onClick={this.makePublic}>Share with the community</Link> : <div /> );
 				return (
 					<div>
 						{this.props.children}
@@ -54,7 +70,7 @@ var ImageShow = React.createClass({
 									<Link to={EditTitleUrl}>Edit Title/Description</Link>
 								</div>
 							</div>
-							<div className='image-show-user-sidebar'>
+							<div className='image-show-user-sidebar group'>
 								{privacy}
 								<Link className="delete-image-button" to="butts, california" onClick={this.executeDelete}>Delete this Image</Link>
 							</div>

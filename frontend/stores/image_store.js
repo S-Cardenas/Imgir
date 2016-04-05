@@ -24,6 +24,15 @@ var replaceImage = function (image) {
 	}
 };
 
+var deleteImage = function (image) {
+	for (var i = 0; i < _images.length; i++) {
+		if (_images[i].id === image.id) {
+			_images.splice(i, 1);
+			break;
+		}
+	}
+};
+
 ImageStore.__onDispatch =  function (payload) {
 	switch(payload.actionType) {
 		case ImageConstants.IMAGES_FETCHED:
@@ -36,6 +45,10 @@ ImageStore.__onDispatch =  function (payload) {
 			this.__emitChange();
 			break;
 
+		case ImageConstants.IMAGE_SENTENCED:
+			deleteImage(payload.image);
+			this.__emitChange();
+			break;
 
 	}
 };

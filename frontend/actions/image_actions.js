@@ -18,6 +18,14 @@ var ImageActions = {
 		AppDispatcher.dispatch(newImage);
 	},
 
+	deleteImage: function (image) {
+		var deathRow = {
+			actionType: ImageConstants.IMAGE_SENTENCED,
+			image: image
+		};
+		AppDispatcher.dispatch(deathRow);
+	}
+
 };
 
 module.exports = ImageActions;

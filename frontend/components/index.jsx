@@ -3,6 +3,7 @@ var ImageUtils = require('../util/api_utils');
 var ImageStore = require('../stores/image_store');
 var Link = require('react-router').Link;
 var ImageIndexItem = require('./image_index_item');
+var SessionStore = require('../stores/session_store');
 
 var React = require('react');
 
