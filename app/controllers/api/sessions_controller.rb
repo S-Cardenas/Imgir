@@ -8,8 +8,12 @@ class Api::SessionsController < ApplicationController
 		params[:user][:username],
 		 params[:user][:password]
 		 )
-		login_user!
-		render json: @user
+		 if @user
+			login_user!
+			render json: @user
+		else
+			render json: { message: "Invalid credentials" }, status: 401
+		end
 	end
 
 	def show

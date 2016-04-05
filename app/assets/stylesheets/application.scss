@@ -78,7 +78,6 @@ body {
 	background: #2b2b2b;
 	color: #fff;
 	box-shadow: 0 0 11px 1px #111;
-	float: left;
 }
 
 .nav-left{
@@ -205,9 +204,7 @@ body {
 	display: block;
 	background: #3274e5;
 	background: linear-gradient(to bottom,#3274e5 0,#2a61bf 100%);
-	border-top: 1px solid #4d8eff;
-	border-bottom: 1px solid #1f478c;
-	border-radius: 2px;
+
 	padding: 8px 20px;
 }
 
@@ -216,6 +213,15 @@ body {
 	background: linear-gradient(to bottom,#357bf2 0,#306ed9 100%);
 	border-top: 1px solid #6ba1ff;
 	border-bottom: 1px solid #1f478c;
+}
+
+.guest-login {
+	border-bottom: 1px solid #660000;
+	border-top: 1px solid #b20000;
+	border-radius: 2px;
+	padding: 8px 15px;
+	background: linear-gradient(to top, #660000 0, #b20000 100%);
+	float: right;
 }
 /*IMAGE UPLOAD*/
 
@@ -260,25 +266,53 @@ body {
 	background: linear-gradient(to bottom,#2b2b2b 0,#444442 0,#121211 100%);
 }
 
-.preview-and-submit > button {
+.preview-thumb-container > button {
 	padding: 20px;
 	z-index: 9000;
+	float: right;
 	position: relative;
+	background: linear-gradient(to bottom,#74b20e 0,#5b8c0b 100%);
+	border-top: 1px solid #a6ee32;
+	border-bottom: 1px solid #426608;
+	border-radius: 2px;
+	margin: 25px 10px;
 }
 
+.preview-thumb-container-cancel {
+	position: absolute;
+	right: -10px;
+	color: #444442;
+	margin: 25px;
+}
+
+.preview-thumb-container > button:hover {
+	background: linear-gradient(to bottom,#7cbf0f 0,#63990c 100%);
+}
+
+.preview-thumb-container {
+	width: 500px;
+	height: 105px;
+	right: -1px;
+	border-radius: 3px;
+	border-left: 2px solid #444442;
+	border-right: 2px solid #444442;
+	border-bottom: 2px solid #444442;
+	position: absolute;
+	top: 99%;
+}
 
 
 .preview-image-thumb {
 	background: #fff;
-	position: relative;;
+	margin-top: 5px;
 	width: 100px;
 	height: 100px;
-	margin: auto;
+	float: left;
 }
 
 /*IMAGE INDEX STUFF*/
 .image-index {
-	margin: auto;
+	margin: 40px auto;
 	width: 1020px;
 	background: #2b2b2b;
 }

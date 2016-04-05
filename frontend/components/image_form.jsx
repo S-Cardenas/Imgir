@@ -1,6 +1,7 @@
 var React = require('react');
 var ImageUtils = require('../util/api_utils');
 var ModalAction = require('../actions/modal_action');
+var Link = require('react-router').Link;
 
 var ImageForm = React.createClass({
 
@@ -43,14 +44,22 @@ var ImageForm = React.createClass({
 		e.stopPropagation();
 	},
 
+	cancelImage: function (e) {
+		e.preventDefault();
+		this.setState({imageUrl: null});
+	},
+
 	render: function() {
 		var imageThumb = function () {
 			if (this.state.imageUrl) {
 				return(
 					<div className="preview-and-submit">
-						<button type='submit'>Begin Upload</button>
-						Preview:
-						<img className="preview-image-thumb" src={this.state.imageUrl}></img>
+						<div className='preview-thumb-container group'>
+							<Link className='preview-image-cancel' to='#' onClick={this.cancelImage}>X</Link>
+							<img className="preview-image-thumb"
+								 src={this.state.imageUrl}></img>
+							 <button type='submit'>Begin Upload</button>
+						</div>
 					</div>
 				);
 			} else {

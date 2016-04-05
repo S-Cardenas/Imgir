@@ -54,7 +54,6 @@ var Imgir = React.createClass({
 
 });
 
-window.SessionUtil = SessionUtil;
 
 $(document).ready(function () {
 	ReactDOM.render(

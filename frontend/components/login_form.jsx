@@ -17,9 +17,9 @@ var LoginForm = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<h1>Looking to Sign In?</h1>
-				<h2>Doom doom doom doom...</h2>
 				<form className='signin-form' onSubmit={this.executeSubmit}>
+					<h1>Looking to Sign In?</h1>
+					<h2>Doom doom doom doom...</h2>
 
 					<input onChange={this.updateUsername}
 						type="text"
@@ -33,10 +33,21 @@ var LoginForm = React.createClass({
 						to="/users/new">Need an account?
 					</Link>
 					<button className='signin-submit'>Sign In</button>
+					<Link className='guest-login' onClick={this.executeGuestLogin} to='images'>Sign in as a guest</Link>
 				</form>
-
 			</div>
 		);
+	},
+
+	executeGuestLogin: function (e) {
+		e.preventDefault();
+		var router = this.context.router;
+
+		this.state.username = "Guest";
+		this.state.password = "1234567";
+		SessionUtil.login(this.state, function () {
+			router.push("/images");
+		});
 	},
 
 	executeSubmit: function(e) {

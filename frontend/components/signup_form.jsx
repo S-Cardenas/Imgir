@@ -18,9 +18,9 @@ var UserForm = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<h1>Sign Up</h1>
-				<h2>Bow before the Allmighty Tallest</h2>
 				<form className='signin-form' onSubmit={this.executeSubmit}>
+					<h1>Sign Up</h1>
+					<h2>Bow before the Allmighty Tallest</h2>
 
 					<input onChange={this.updateUsername}
 						type="text"

@@ -12,6 +12,10 @@ var Navbar = React.createClass({
 		};
 	},
 
+	contextTypes: {
+		router: React.PropTypes.object.isRequired
+	},
+
 	componentDidMount: function() {
 		this.sessionStoreToken = SessionStore.addListener(this._onChange);
 		SessionUtil.fetchCurrentUser( function () {
@@ -34,6 +38,7 @@ var Navbar = React.createClass({
 	render: function() {
 		var signOut = function () {
 			SessionUtil.logout();
+			this.context.router.push('/login');
 		};
 		var navAccount = function () {
 			if (!this.state.currentUser) {
@@ -49,7 +54,7 @@ var Navbar = React.createClass({
 						{this.state.currentUser.username}
 						<ul className='nav-account-options'>
 							<li>
-								<button onClick={signOut}>Sign Out</button>
+								<button onClick={signOut.bind(this)}>Sign Out</button>
 							</li>
 							<li>more text</li>
 
