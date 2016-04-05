@@ -21,4 +21,4 @@ image5 = Image.create!(title:"Serious mode GIR", user_id: user2.id, private: fal
 
 image6 = Image.create!(title:"Dib", user_id: user9000.id, private: false, description: "The hero of our times. Who could I be, uploading this? You'll never find out, Zim!", img: File.open("app/assets/images/Dib.jpg"))
 
-image7 = Image.create!(title:"Advanced", user_id: user5.id, private: false, description: "The Almighty Tallest simply have a better understanding of things than some pleb like Zim.", img: File.open("app/assets/images/almighty_tallest"))
+image7 = Image.create!(title:"Advanced", user_id: user5.id, private: false, description: "The Almighty Tallest simply have a better understanding of things than some pleb like Zim.", img: File.open("app/assets/images/almighty_tallest.jpeg"))
