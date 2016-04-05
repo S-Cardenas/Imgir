@@ -14,7 +14,7 @@ image2 = Image.create!(title: "GIR with half of his dog suit on", user_id: user1
 
 image3 = Image.create!(title: "GIR with a Pig", user_id: user3.id, private: false, description: "From episode 3406234056239672, where GIR finds a pig.", img: File.open("app/assets/images/gir_with_pig.png"))
 
-image4 = Image.create!(title:"GIR and Zim share a laugh", user_id: user4.id, private: false, description: "A rare moment of mirth shared between an alien and his robotic minion." img: File.open("app/assets/images/Zim_and_gir_laughing_together.png"))
+image4 = Image.create!(title:"GIR and Zim share a laugh", user_id: user4.id, private: false, description: "A rare moment of mirth shared between an alien and his robotic minion.", img: File.open("app/assets/images/Zim_and_gir_laughing_together.png"))
 
 image5 = Image.create!(title:"Serious mode GIR", user_id: user2.id, private: false, description: "GIR as he looks when he gets serious about something. Often not to much effect.", img: File.open("app/assets/images/Duty_Mode_GIR.png"))
 
