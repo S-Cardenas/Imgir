@@ -1,5 +1,4 @@
-var AppDispatcher = require('../dispatcher/dispatcher');
-var UserActions = require('../actions/session_actions');
+var UserActions = require('../actions/user_actions');
 
 var UserUtil = {
 	createAccount: function(credentials, callback) {
@@ -14,6 +13,20 @@ var UserUtil = {
 			}
 		});
 	},
+
+	fetchImages: function(id) {
+		$.ajax({
+			type: 'GET',
+			url: "/api/users/" + id,
+			dataType: "json",
+			success: function (data) {
+				UserActions.imagesReceived(data);
+			},
+			error: function () {
+				console.log("User's images couldn't be fetched");
+			}
+		});
+	}
 
 };
 

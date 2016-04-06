@@ -1,7 +1,12 @@
 json.extract!(
 	user,
-	:username, :password_digest
+	:id, :username, :password_digest
 )
 
-
-json.images user.images
+if show_images
+	json.images do
+		json.array!(user.images) do |image|
+			json.partial!('api/images/image', image: image, show_user: false)
+		end
+	end
+end

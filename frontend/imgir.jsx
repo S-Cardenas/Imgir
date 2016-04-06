@@ -23,6 +23,7 @@ var ImageIndex = require('./components/index');
 var ImageShow = require('./components/image_show');
 var ImageEditForm = require('./components/image_edit_form');
 
+var UserImagesShow = require('./components/user_images_show');
 
 var Imgir = React.createClass({
 
@@ -68,6 +69,7 @@ $(document).ready(function () {
 						/>
 				</Route>
 				<Route path= "users/new" component={SignupForm} />
+				<Route path= "users/:id" component={UserImagesShow}/>
 				<Route path="login" component={LoginForm}/>
 			</Route>
 		</Router>,

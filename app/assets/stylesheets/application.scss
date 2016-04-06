@@ -368,14 +368,23 @@ body {
 }
 /*IMAGE SHOW AND EDIT*/
 .image-show {
-	position: relative;
-	margin: 20px auto;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	margin: 20px;
 	font-size: 36px;
 	color: #fff;
 	border: 2px solid #444442;
 	border-radius: 4px;
 	width: 800px;
 	height: auto;
+}
+
+.image-show-user {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 800px;
 }
 
 .image-show-user-content {
@@ -399,7 +408,8 @@ body {
 	top: 50%;
 	transform: translateY(-50%);
 	position: relative;
-	margin: 5px
+	margin: 0;
+
 }
 
 .image-show-image-user > img {

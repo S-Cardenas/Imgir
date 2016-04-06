@@ -14,11 +14,13 @@ var ImageShow = React.createClass({
 	},
 
 	getInitialState: function() {
-		return { image: ImageStore.find(this.props.params.id)};
+		var imageId = this.props.imageid || this.props.params.id;
+		return { image: ImageStore.find(imageId)};
 	},
 
 	componentDidMount: function() {
-		ImageUtils.fetchOneImage(this.props.params.id);
+		var imageId = this.props.imageid || this.props.params.id;
+		ImageUtils.fetchOneImage(imageId);
 		this.ImageStoreToken = ImageStore.addListener(this._onChange);
 	},
 
@@ -27,7 +29,8 @@ var ImageShow = React.createClass({
 	},
 
 	_onChange: function () {
-		this.setState({ image: ImageStore.find(this.props.params.id)});
+		var imageId = this.props.imageid || this.props.params.id;
+		this.setState({ image: ImageStore.find(imageId)});
 	},
 
 	executeDelete: function (e) {

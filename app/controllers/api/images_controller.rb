@@ -1,7 +1,9 @@
 class Api::ImagesController < ApplicationController
 
 	def index
-		@images = Image.all.where("private = false OR user_id = ?", current_user.id)
+		@images = Image
+			.includes(:user)
+			.where("private = false OR user_id = ?", current_user.id)
 		render :index
 	end
 

@@ -56,7 +56,9 @@ var Navbar = React.createClass({
 							<li>
 								<button onClick={signOut.bind(this)}>Sign Out</button>
 							</li>
-							<li>more text</li>
+							<li>
+								<Link to={"users/" + this.state.currentUser.id}>Your Images</Link>
+							</li>
 
 						</ul>
 
