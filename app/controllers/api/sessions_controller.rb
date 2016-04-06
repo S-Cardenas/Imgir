@@ -9,7 +9,7 @@ class Api::SessionsController < ApplicationController
 		 params[:user][:password]
 		 )
 		 if @user
-			login_user!
+			login!(@user)
 			render json: @user
 		else
 			render json: { message: "Invalid credentials" }, status: 401

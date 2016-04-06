@@ -6,5 +6,7 @@ Rails.application.routes.draw do
 		resource :session, only: [:new, :show, :create, :destroy]
 	end
 
+	get "auth/facebook/callback", to: "omniauth#facebook"
 	get "*unmatched_route", to: "static_pages#root"
+
 end

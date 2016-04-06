@@ -54,10 +54,12 @@ var Navbar = React.createClass({
 						{this.state.currentUser.username}
 						<ul className='nav-account-options'>
 							<li>
-								<button onClick={signOut.bind(this)}>Sign Out</button>
+								<Link to={"users/" + this.state.currentUser.id}>Your Images</Link>
 							</li>
 							<li>
-								<Link to={"users/" + this.state.currentUser.id}>Your Images</Link>
+								<div className="nav-account-options-bottom">
+									<button onClick={signOut.bind(this)}>Sign Out</button>
+								</div>
 							</li>
 
 						</ul>

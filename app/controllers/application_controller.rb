@@ -7,14 +7,9 @@ class ApplicationController < ActionController::Base
 
 	private
 
-	def login_user!
-		if @user
-			@user.reset_session_token!
-			session[:session_token] = @user.session_token
-
-		else
-			flash[:errors] = ["Invalid username or password"]
-		end
+	def login!(user)
+		user.reset_session_token!
+		session[:session_token] = user.session_token
 	end
 
 	def logout_user!

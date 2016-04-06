@@ -33,7 +33,9 @@ var LoginForm = React.createClass({
 						to="/users/new">Need an account?
 					</Link>
 					<button className='signin-submit'>Sign In</button>
+					<a className='facebook-signin' href="/auth/facebook"><i className="fa fa-facebook"></i></a>
 					<Link className='guest-login' onClick={this.executeGuestLogin} to='images'>Sign in as a guest</Link>
+
 				</form>
 			</div>
 		);

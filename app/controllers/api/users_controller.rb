@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			login_user!
+			login!(@user)
 			render json: @user
 		else
 			flash[:errors] = @user.errors.full_messages
