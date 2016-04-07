@@ -357,6 +357,7 @@ body {
 	background: #2b2b2b;
 }
 
+
 .image-index-item {
 	float:left;
 	color: #fff;
@@ -684,6 +685,50 @@ body {
 
 .image-edit-submit:hover {
 	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#2b2b2b),color-stop(0%,#444442),color-stop(100%,#121211));
+}
+
+.user-index {
+	width: 820px;
+	margin: 40px 0 40px 20px;
+	position: relative;
+	float:left;
+}
+
+.user-index-sidebar {
+	float:right;
+	margin: 40px;
+	margin-left: 20px;
+	width: 300px;
+	background: #2b2b2b;
+	height: 600px;
+}
+
+.user-images-display {
+	position: absolute;
+	width: 1220px;
+	margin: auto;
+}
+
+/*ALBUM STUFF*/
+
+.album-form {
+	position: relative;
+	background: #2B2B2B;
+	display: block;
+	left: 40%;
+	top: 100px;
+	border: 2px solid #444442;
+	border-radius: 6px;
+	width: 300px;
+	z-index: 3;
+	padding: 20px;
+	padding-bottom: 10px;
+}
+
+.album-button {
+	position: relative;
+	left: 100%;
+	transform: translateX(-100%)
 }
 
 .modal {

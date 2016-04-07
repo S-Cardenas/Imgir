@@ -6,18 +6,14 @@
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote built using Ruby on Rails
-and React.js. FresherNote allows users to:
-
-<!-- This is a Markdown checklist. Use it to keep track of your
-progress. Put an x between the brackets for a checkmark: [x] -->
+Imgir is a web application clone of Imgur, built on rails and React.js. Imgir allows its users to:
 
 - [X] Create an account
 - [X] Log in / Log out
-- [ ] Create, read, edit, and delete notes
-- [ ] Organize notes within Notebooks
-- [ ] Tag notes with multiple tags
-- [ ] Apply complex styling to notes while editing
+- [X] Create, read, edit, and delete images
+- [ ] Organize image within albums
+- [ ] Comment on images
+- [ ] Upvote and downvote content
 
 ## Design Docs
 * [View Wireframes][views]

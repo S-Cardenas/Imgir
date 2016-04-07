@@ -5,6 +5,7 @@ var ImageIndexItem = require('./image_index_item');
 var ModalAction = require('../actions/modal_action');
 var UserUtil = require('../util/user_utils');
 var Link = require('react-router').Link;
+var AlbumForm = require('./album_form');
 
 
 var UserImagesShow = React.createClass({
@@ -49,6 +50,20 @@ var UserImagesShow = React.createClass({
 		e.stopPropagation();
 	},
 
+	executeAlbumCreate: function (e) {
+		e.preventDefault();
+		var preppedModal = function () {
+			return(
+				<div className='modal' onClick={this.handleModalClick}>
+					<div onClick={this.stopProp}>
+					< AlbumForm />
+					</div>
+				</div>
+			);
+		};
+		ModalAction.setModal(preppedModal());
+	},
+
 
 	render: function() {
 		var images = this.state.images.map( function (image) {
@@ -64,8 +79,14 @@ var UserImagesShow = React.createClass({
 			);
 		}.bind(this));
 		return (
-			<div className='image-index group'>
+			<div className='user-images-display group'>
+				<div className='image-index user-index group'>
 				{images}
+				</div>
+				<div className='user-index-sidebar'>
+					<button className='create-album-button image-show-privacy'
+						onClick={this.executeAlbumCreate}>Create album</button>
+				</div>
 			</div>
 		);
 	}

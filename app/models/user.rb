@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 	attr_reader :password
 
 	has_many(:images)
+	has_many(:albums)
 
 	def self.find_by_credentials(username, password)
 		user = User.find_by(username: username)

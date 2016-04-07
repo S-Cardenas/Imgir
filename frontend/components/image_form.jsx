@@ -11,9 +11,6 @@ var ImageForm = React.createClass({
 		};
 	},
 
-	contextTypes: {
-		router: React.PropTypes.object.isRequired
-	},
 	executeSubmit: function (e) {
 		e.preventDefault();
 		var formData = new FormData();
