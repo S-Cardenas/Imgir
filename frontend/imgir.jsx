@@ -62,6 +62,7 @@ $(document).ready(function () {
 	ReactDOM.render(
 		<Router history={browserHistory}>
 			<Route path= "/" component={Imgir}>
+				<IndexRoute component={LoginForm} />
 				<Route path= "images" component={ImageIndex} onEnter={_requireLoggedIn} />
 				<Route path= "images/new" component={ImageForm} />
 				<Route path= "images/:id" component={ImageShow}>

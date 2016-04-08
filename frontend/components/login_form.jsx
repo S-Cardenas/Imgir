@@ -1,5 +1,6 @@
 var React = require('react');
 var SessionUtil = require('../util/session_utils');
+var SessionStore = require('../stores/session_store');
 var Link = require('react-router').Link;
 
 var LoginForm = React.createClass({
@@ -12,6 +13,16 @@ var LoginForm = React.createClass({
 			username: "",
 			password: ""
 		};
+	},
+
+	componentDidMount: function() {
+		this.SessionStoreToken = SessionStore.addListener(this._checkUser);
+	},
+
+	_checkUser: function () {
+		if (SessionStore.currentUser()) {
+			this.context.router.push("/images");
+		}
 	},
 
 	render: function() {
