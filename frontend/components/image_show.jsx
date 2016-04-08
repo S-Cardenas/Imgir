@@ -35,16 +35,18 @@ var ImageShow = React.createClass({
 		this.setState({ image: ImageStore.find(imageId)});
 	},
 
-	executeDelete: function (e) {
+	executeDelete: function (image, e) {
 		e.preventDefault();
-		ImageUtils.deleteImage(this.props.params.id);
+		ImageUtils.deleteImage(image.id);
 		this.context.router.push("/images");
+		ModalAction.setModal(null);
 	},
 
-	makePublic: function (e) {
+	makePublic: function (image,e) {
 		e.preventDefault();
-		ImageUtils.updatePrivacy(e, this.props.params.id);
+		ImageUtils.updatePrivacy(e, image.id);
 		this.context.router.push("/images");
+		ModalAction.setModal(null);
 	},
 
 	stopProp: function (e) {
@@ -76,7 +78,7 @@ var ImageShow = React.createClass({
 			if (this.props.editable) {
 				if (image.user.id === (currentUser && currentUser.id)) {
 					var EditTitleUrl = "/images/" + image.id + "/edit";
-					var privacy = (image.private ?  <Link className='image-show-privacy' to="#" onClick={this.makePublic}>Share with the community</Link> : <div /> );
+					var privacy = (image.private ?  <Link className='image-show-privacy' to="#" onClick={this.makePublic.bind(this,image)}>Share with the community</Link> : <div /> );
 					return (
 						<div>
 							{this.props.children}
@@ -101,7 +103,7 @@ var ImageShow = React.createClass({
 								</div>
 								<div className='image-show-user-sidebar group'>
 									{privacy}
-									<Link className="delete-image-button" to="butts, california" onClick={this.executeDelete}>Delete this Image</Link>
+									<Link className="delete-image-button" to="butts, california" onClick={this.executeDelete.bind(this,image)}>Delete this Image</Link>
 								</div>
 
 								</div>
