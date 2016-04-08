@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
 	has_many(:images)
 	has_many(:albums)
+	has_many(:comments)
 
 	def self.find_by_credentials(username, password)
 		user = User.find_by(username: username)
@@ -24,7 +25,7 @@ class User < ActiveRecord::Base
 		User.create(
 			provider: provider,
 			uid: uid,
-			username: "#{auth_hash[:extra][:raw_info][:name]}" + "_" "#{auth_hash[:extra][:raw_info][:email]}" + "#{SecureRandom::base64(4)}"
+			username: "#{auth_hash[:extra][:raw_info][:name]}" + "_"  + "#{SecureRandom::base64(6)}"
 		)
 	end
 

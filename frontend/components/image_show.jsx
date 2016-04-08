@@ -4,6 +4,7 @@ var ImageStore = require('../stores/image_store');
 var ImageEditForm = require('./image_edit_form');
 var SessionStore = require('../stores/session_store');
 var ImageShowItem = require('./image_show_item');
+var Comments = require('./comments');
 
 
 var Link = require('react-router').Link;
@@ -47,8 +48,9 @@ var ImageShow = React.createClass({
 
 	render: function() {
 		var image = this.state.image;
+		var currentUser = SessionStore.currentUser();
 		if (image) {
-			if (image.user.id === SessionStore.currentUser().id) {
+			if (image.user.id === (currentUser && currentUser.id)) {
 				var EditTitleUrl = "/images/" + image.id + "/edit";
 				var privacy = (image.private ?  <Link className='image-show-privacy' to="#" onClick={this.makePublic}>Share with the community</Link> : <div /> );
 				return (
@@ -86,7 +88,7 @@ var ImageShow = React.createClass({
 				var uploader = (image.user ? image.user.username : "");
 				var uploaderShow = (image.user ? ("users/" + image.user.id) : "");
 				return (
-					<div>
+					<div className='image-show-content'>
 						{this.props.children}
 						<div className='image-show'>
 							<div className='image-show-header'>
@@ -103,6 +105,9 @@ var ImageShow = React.createClass({
 							<div className='image-details-description'>
 								{image.description}
 							</div>
+						</div>
+						<div className='comments-section image-show'>
+							<Comments params={this.props.params}/>
 						</div>
 					</div>
 				);

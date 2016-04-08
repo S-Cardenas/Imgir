@@ -24,3 +24,21 @@ image6 = Image.create!(title:"Dib", user_id: user9000.id, private: false, descri
 image7 = Image.create!(title:"Advanced", user_id: user5.id, private: false, description: "The Almighty Tallest simply have a better understanding of things than some pleb like Zim.", img: File.open("app/assets/images/almight_tallest.jpeg"))
 
 image8 = Image.create!(title:"Poop Dog", user_id: user1.id, private: false, description: "Curse you poop dog!", img: File.open("app/assets/images/poop_dog.jpg"))
+
+Comment.destroy_all
+
+comment1 = Comment.create!(body:"No, it's stupid.", user_id: user2.id, image_id: image7.id, parent_comment_id: nil)
+
+comment2 = Comment.create!(body:"I think it's ok", user_id: user1.id, image_id: image7.id, parent_comment_id: comment1.id)
+
+comment3 = Comment.create!(body:"Look at how tall they are!", user_id: user9000.id, image_id: image7.id, parent_comment_id: nil)
+
+comment4 = Comment.create!(body:"ITT:Idiots", user_id: user2.id, image_id: image7.id, parent_comment_id: nil)
+
+comment5 = Comment.create!(body:"AWW LOOKIT GIR", user_id: user9000.id, image_id: image1.id, parent_comment_id: nil)
+
+comment6 = Comment.create!(body:"I love his little feet!", user_id: user1.id, image_id: image1.id, parent_comment_id: comment5.id)
+
+comment7 = Comment.create!(body:"And his tongue! El-oh-el.", user_id: user5.id, image_id: image1.id, parent_comment_id: comment6.id)
+
+comment8 = Comment.create!(body:"Invader Zim is stupid and for nerds.", user_id: user4.id, image_id: image1.id, parent_comment_id: nil)
