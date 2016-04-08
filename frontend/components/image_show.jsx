@@ -5,6 +5,7 @@ var ImageEditForm = require('./image_edit_form');
 var SessionStore = require('../stores/session_store');
 var ImageShowItem = require('./image_show_item');
 var Comments = require('./comments');
+var ModalAction = require('../actions/modal_action');
 
 
 var Link = require('react-router').Link;
@@ -46,6 +47,28 @@ var ImageShow = React.createClass({
 		this.context.router.push("/images");
 	},
 
+	stopProp: function (e) {
+		e.stopPropagation();
+	},
+	
+	executeEditOpen: function (image, e) {
+			e.preventDefault();
+			var preppedModal = function (image) {
+				return(
+					<div className='modal' onClick={this.handleModalClick}>
+						<div onClick={this.stopProp}>
+						< ImageEditForm image={image}/>
+						</div>
+					</div>
+				);
+			};
+			ModalAction.setModal(preppedModal.call(this, image));
+	},
+
+	handleModalClick: function () {
+		ModalAction.setModal(null);
+	},
+
 	render: function() {
 		var image = this.state.image;
 		var currentUser = SessionStore.currentUser();
@@ -73,7 +96,7 @@ var ImageShow = React.createClass({
 													{image.description}
 												</li>
 											</ul>
-										<Link to={EditTitleUrl}>Edit Title/Description</Link>
+										<Link to={EditTitleUrl} onClick={this.executeEditOpen.bind(this, image)}>Edit Title/Description</Link>
 									</div>
 								</div>
 								<div className='image-show-user-sidebar group'>

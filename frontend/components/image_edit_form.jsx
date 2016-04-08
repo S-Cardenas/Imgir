@@ -1,6 +1,7 @@
 var React = require('react');
 var ImageUtils = require('../util/api_utils');
 var ImageStore = require('../stores/image_store');
+var ModalAction = require('../actions/modal_action');
 
 
 var imageEditForm = React.createClass({
@@ -8,30 +9,22 @@ var imageEditForm = React.createClass({
 		router: React.PropTypes.object.isRequired
 	},
 	getInitialState: function() {
+		var image = this.props.image;
 		return {
-			title: ImageStore.find(this.props.params.id).title,
-			description: ImageStore.find(this.props.params.id).description
+			title: image.title,
+			description: image.description
 		};
 	},
 
 	pushURL: function () {
-		return ('/images/' + this.props.params.id);
+		return ('/users/' + this.props.image.user.id);
 	},
 
 	executeSubmit: function (e) {
 		e.preventDefault();
 		e = e.currentTarget;
-		ImageUtils.editImage(e, this.props.params.id);
-		this.context.router.push(this.pushURL());
-	},
-
-	handleModalClick: function () {
-
-		this.context.router.push(this.pushURL());
-	},
-
-	stopProp: function (e) {
-		e.stopPropagation();
+		ImageUtils.editImage(e, this.props.image.id);
+		ModalAction.setModal(null);
 	},
 
 	_onChange: function (e) {
@@ -47,8 +40,7 @@ var imageEditForm = React.createClass({
 
 	render: function() {
 		return (
-			<div className='modal' onClick={this.handleModalClick}>
-				<div className= 'image-edit' onClick={this.stopProp}>
+				<div className= 'image-edit'>
 					<div className= 'image-edit-header group'>
 						<h3>Add a title or description</h3>
 					</div>
@@ -80,7 +72,6 @@ var imageEditForm = React.createClass({
 					</form>
 
 				</div>
-			</div>
 		);
 	}
 

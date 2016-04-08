@@ -3,7 +3,7 @@ class Api::ImagesController < ApplicationController
 	def index
 		@images = Image
 			.includes(:user)
-			.where("private = false OR user_id = ?", current_user.id)
+			.where("private = false OR user_id = ?", current_user.id).order(created_at: :desc)
 		render :index
 	end
 
