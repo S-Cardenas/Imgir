@@ -10,9 +10,11 @@ var imageEditForm = React.createClass({
 	},
 	getInitialState: function() {
 		var image = this.props.image;
+		var imageTitle = (image.title ? image.title : "");
+		var imageDescription = (image.description ? image.description : "");
 		return {
-			title: image.title,
-			description: image.description
+			title: imageTitle,
+			description: imageDescription
 		};
 	},
 

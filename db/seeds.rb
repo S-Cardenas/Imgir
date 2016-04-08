@@ -39,6 +39,8 @@ image13 = Image.create!(title:"I am Gotham's Reckoning", user_id: user6.id, priv
 
 image14 = Image.create!(title:"President Man for President", user_id: user5.id, private: false, description: "If you don't like politics, there's always this guy.", img: File.open("app/assets/images/president_man_by_greasedupdeafguy.jpg"))
 
+image15 = Image.create!(title:"Mimi the SIR", user_id: user7.id, private: true, description: "The best of SIRs. Way better than GIR.", img: File.open("app/aseets/images/sir_mimi.png"))
+
 
 
 Comment.destroy_all

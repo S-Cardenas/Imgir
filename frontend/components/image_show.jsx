@@ -50,7 +50,7 @@ var ImageShow = React.createClass({
 	stopProp: function (e) {
 		e.stopPropagation();
 	},
-	
+
 	executeEditOpen: function (image, e) {
 			e.preventDefault();
 			var preppedModal = function (image) {
