@@ -51,11 +51,23 @@ var Comments = React.createClass({
 		if (this.state.replyComment === comment.id) {
 			return(
 			<form className='comment-form' onSubmit={this.executeSubmit.bind(this, close)}>
-				<CommentForm parent={comment} />
+				<CommentForm parent={comment} onOutsideClick={this._onOutsideClick}/>
 			</form>
 			);
 		} else {
 			return null;
+		}
+	},
+
+	_onOutsideClick: function (e) {
+		var set = true;
+		for (var i = 0; i < e.path.length; i++) {
+			if (e.path[i].className === "comment-form-fields group") {
+				set = false;
+			}
+		}
+		if (set) {
+			this.setState({replyComment:null});
 		}
 	},
 
@@ -72,7 +84,7 @@ var Comments = React.createClass({
 		}.bind(this));
 		return (
 			<div>
-				<form className='comment-form' onSubmit={this.executeSubmit}>
+				<form className='comment-form' onSubmit={this.executeSubmit.bind(this, null)}>
 					<CommentForm />
 				</form>
 				<div className='comment-counter'>

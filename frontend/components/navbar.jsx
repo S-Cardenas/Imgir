@@ -4,6 +4,7 @@ var SessionUtil = require('../util/session_utils');
 var Link = require('react-router').Link;
 var ImageForm = require('./image_form');
 var ModalAction = require('../actions/modal_action');
+var Search = require('./search');
 
 var Navbar = React.createClass({
 	getInitialState: function() {
@@ -46,23 +47,28 @@ var Navbar = React.createClass({
 					<div className='signin group'>
 						<Link to='/login'>Sign In </Link>
 						<Link to='/users/new'>Sign Up</Link>
+						< Search />
 					</div>
 				);
 			} else {
 				return (
 					<div className='signin group'>
-						{this.state.currentUser.username}
-						<ul className='nav-account-options'>
-							<li>
-								<Link to={"users/" + this.state.currentUser.id}>Your Images</Link>
-							</li>
-							<li>
-								<div className="nav-account-options-bottom">
-									<button onClick={signOut.bind(this)}>Sign Out</button>
-								</div>
-							</li>
+						<div className='nav-account-name'>
+							{this.state.currentUser.username}
+							<ul className='nav-account-options'>
+								<li>
+									<Link to={"users/" + this.state.currentUser.id}>Your Images</Link>
+								</li>
+								<li>
+									<div className="nav-account-options-bottom">
+										<button onClick={signOut.bind(this)}>Sign Out</button>
+									</div>
+								</li>
 
-						</ul>
+							</ul>
+						</div>
+						< Search />
+
 
 
 					</div>

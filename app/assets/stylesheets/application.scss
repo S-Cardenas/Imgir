@@ -83,7 +83,7 @@ body {
 }
 
 .nav-left{
-	margin: 0 130px 0 80px;
+	margin: 0 0 0 80px;
 	float:left;
 }
 
@@ -117,13 +117,13 @@ body {
 .signin {
 	margin: 0;
 	float: right;
-	padding: 25px;
+	padding: 15px;
 }
 
 .nav-account-options {
 	display: none;
 	position: absolute;
-	margin-top: 10px;
+	margin-top: 15px;
 	white-space: nowrap;
 	color: #000;
 	background: #fff;
@@ -136,9 +136,10 @@ body {
 }
 
 .signin > a {
-	padding: 16px 10px;
+	padding: 12px 10px;
 	font-size: 14px;
 	color: #ddddd1;
+	float: right;
 }
 
 .nav-account-options > li {
@@ -162,9 +163,51 @@ body {
 	color: #121211;
 }
 
-.signin:hover > .nav-account-options {
+.nav-account-name:hover > .nav-account-options {
 	display: block;
 }
+
+.search-form {
+	color: #ccc;
+  float: right;
+  margin-right: 20px;
+}
+
+
+.search-form > input {
+	width: 200px;
+	height: 27px;
+}
+
+.search-form > input:focus {
+	width:495px;
+	outline: none;
+	border:none;
+	border-bottom: 4px solid #B5A10F;
+}
+
+.search-form > button {
+	width: 0;
+}
+
+.search-form > button:focus {
+	outline: none;
+}
+
+.nav-account-name {
+	float: right;
+	padding:10px;
+}
+
+.fa-search {
+	position: relative;
+	right: 60px;
+}
+
+
+// .signin:hover {
+// 	background: #444442
+// }
 
 /*Signin*/
 .signin-form {

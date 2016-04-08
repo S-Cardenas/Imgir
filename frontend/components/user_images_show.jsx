@@ -34,7 +34,7 @@ var UserImagesShow = React.createClass({
 				return(
 					<div className='modal' onClick={this.handleModalClick}>
 						<div onClick={this.stopProp}>
-						< ImageShow imageid={image.id} />
+						< ImageShow imageid={image.id} editable={true}/>
 						</div>
 					</div>
 				);
