@@ -42,7 +42,7 @@
 			);
 		}
 
-The state then determines which classname I use for the given image, which allows me use CSS to scale them properly. I could then put this new component into the image_show component that would display an individual image. If the image was smaller than the frame, it was centered and put against a black background, as is true with Imgur.
+	The state then determines which classname I use for the given image, which allows me use CSS to scale them properly. I could then put this new component into the image_show component that would display an individual image. If the image was smaller than the frame, it was centered and put against a black background, as is true with Imgur.
 
 - If you look at an image show page, comments for that image should display below it, but they have to be clear as to what they're replying to. Whereas many will reply to the image itself, there are several that will reply to the comments themselves but still need to be attached to the image. This is accomplished using an optional parent_comment_id column that, when not null, will nest the comments. I used a recursively called component that would find all child comments for a given comment and make them part of its display. The potential for a new reply form had to append itself to that, but actually be called through a method at the top level, so that only one form could appear at a time.
 
@@ -52,7 +52,7 @@ The state then determines which classname I use for the given image, which allow
 			};
 		},
 
-Here, the reply form is introduced as a state that will change when you click the button to reply. It then takes an id and sets it as the comment with a form to be rendered and rerenders.
+		Here, the reply form is introduced as a state that will change when you click the button to reply. It then takes an id and sets it as the comment with a form to be rendered and rerenders.
 
 		toggleForm: function (comment) {
 			return function (e) {
@@ -89,70 +89,70 @@ Here, the reply form is introduced as a state that will change when you click th
 		},
 
 
-These functions handle the actual comment form that shows up and get rid of it if you click elsewhere.
-
-	render: function() {
-		var comments = this.state.comments.map( function (comment) {
-
-			return (
-				<div key={comment.id}>
-					<Comment comment={comment} params={this.props.params} 		
-					addForm={this.toggleForm} replyForm={this.replyForm}/>
-				</div>
-			);
-		}.bind(this));
-		return (
-			<div>
-				<form className='comment-form' onSubmit={this.executeSubmit.bind(this, null)}>
-					<CommentForm />
-				</form>
-				<div className='comment-counter'>
-					{comments.length} parent comments
-				</div>
-				{comments}
-			</div>
-		);
-	}
-
-I then have the comments index render each comment, passing down the form toggle and reply form so that it can access the state changes even in the comment itself.
+	These functions handle the actual comment form that shows up and get rid of it if you click elsewhere.
 
 		render: function() {
-		var childComments;
-		var comment = this.props.comment;
-		if (this.props.comment.childComments) {
-			childComments = this.props.comment.childComments.map( function (child) {
-				return(
-					<div key={child.id}>
-						<Comment comment={child} addForm={this.props.addForm}
-						replyForm={this.props.replyForm} />
-					</div>
-					);
-			}.bind(this));
-		}
-		var userShowUrl = "/users/" + comment.user.id;
-		return (
-			<div className='full-comment'>
-				<div className='comment-item'  >
-					<div className='comment-user-and-reply group'>
-						<div className='comment-user comment-link'>
-							<Link to={userShowUrl} >{comment.user.username}</Link>
-						</div>
-						<div>
-							{moment(comment.created_at).fromNow()}
-						</div>
-						<div className='reply comment-link' onClick={this.props.addForm(comment)}>
-							reply
-						</div>
-					</div>
-					{comment.body}
-				</div>
-				{this.props.replyForm(comment)}
-				{childComments}
-			</div>
-		);
-	}
+			var comments = this.state.comments.map( function (comment) {
 
-And finally, the comments pass these props down to their child comments, rendering the child comments after themselves, and display the reply form in the appropriate place if the state matches their comment id. This way, we have a comment form that appears in the right spot when called, can actually add the comment in the right place, and goes away if you click outside of it.
+				return (
+					<div key={comment.id}>
+						<Comment comment={comment} params={this.props.params} 		
+						addForm={this.toggleForm} replyForm={this.replyForm}/>
+					</div>
+				);
+			}.bind(this));
+			return (
+				<div>
+					<form className='comment-form' onSubmit={this.executeSubmit.bind(this, null)}>
+						<CommentForm />
+					</form>
+					<div className='comment-counter'>
+						{comments.length} parent comments
+					</div>
+					{comments}
+				</div>
+			);
+		}
+
+	I then have the comments index render each comment, passing down the form toggle and reply form so that it can access the state changes even in the comment itself.
+
+			render: function() {
+			var childComments;
+			var comment = this.props.comment;
+			if (this.props.comment.childComments) {
+				childComments = this.props.comment.childComments.map( function (child) {
+					return(
+						<div key={child.id}>
+							<Comment comment={child} addForm={this.props.addForm}
+							replyForm={this.props.replyForm} />
+						</div>
+						);
+				}.bind(this));
+			}
+			var userShowUrl = "/users/" + comment.user.id;
+			return (
+				<div className='full-comment'>
+					<div className='comment-item'  >
+						<div className='comment-user-and-reply group'>
+							<div className='comment-user comment-link'>
+								<Link to={userShowUrl} >{comment.user.username}</Link>
+							</div>
+							<div>
+								{moment(comment.created_at).fromNow()}
+							</div>
+							<div className='reply comment-link' onClick={this.props.addForm(comment)}>
+								reply
+							</div>
+						</div>
+						{comment.body}
+					</div>
+					{this.props.replyForm(comment)}
+					{childComments}
+				</div>
+			);
+		}
+
+	And finally, the comments pass these props down to their child comments, rendering the child comments after themselves, and display the reply form in the appropriate place if the state matches their comment id. This way, we have a comment form that appears in the right spot when called, can actually add the comment in the right place, and goes away if you click outside of it.
 __
 ### Features
 
