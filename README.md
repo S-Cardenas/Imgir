@@ -1,12 +1,12 @@
 # Imgir
 
-[Heroku link][heroku] **NB:** This should be a link to your production site
+[Imgir][heroku]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: http://imgir.herokuapp.com
 
 ## Minimum Viable Product
 
-Imgir is a web application clone of Imgur, built on rails and React.js. Imgir allows its users to:
+Imgir is a web application clone of Imgur, built on rails and React.js, but with an Invader Zim theme. Imgir allows its users to:
 
 - [X] Create an account
 - [X] Log in / Log out
