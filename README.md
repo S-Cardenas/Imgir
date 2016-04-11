@@ -1,4 +1,4 @@
-# FresherNote
+# Imgir
 
 [Heroku link][heroku] **NB:** This should be a link to your production site
 
@@ -11,8 +11,8 @@ Imgir is a web application clone of Imgur, built on rails and React.js. Imgir al
 - [X] Create an account
 - [X] Log in / Log out
 - [X] Create, read, edit, and delete images
+- [X] Comment on images
 - [ ] Organize image within albums
-- [ ] Comment on images
 - [ ] Upvote and downvote content
 
 ## Design Docs
