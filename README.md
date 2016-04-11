@@ -1,18 +1,26 @@
-# Imgir
+#Imgir
 
 [Imgir][heroku]
 
 [heroku]: http://imgir.herokuapp.com
 
-Technical Details
+###Landing Page
+
+![welcome]
+
+###Image Show Page
+
+![image_show]
+
+###Technical Details
 
 - When Imgir displays images in their own show page, it has to be able to account for images of different dimensions all fitting within a reasonably-sized box. In order to do this, it has to figure out whether the image is larger or smaller than the frame, and then scale it down if it is larger. But of course, wider images need to scale differently than taller images, so I needed to use javascript to calculate whether I should shrink based on width or height. I found that the best way to do this was to use the Dom that the image constituted to get the dimensions, and then compare its width to its height.
 
 		componentDidMount: function() {
 			ReactDOM.findDOMNode(this.refs.image);
 		},
-	
-	
+
+
 		determineClassName: function () {
 			var node = ReactDOM.findDOMNode(this.refs.image);
 			if (node.height > 600 || node.width > 500) {
@@ -23,14 +31,14 @@ Technical Details
 				}
 			}
 		},
-	
+
 		render: function() {
 			return (
-		
+
 				<img className={this.state.classname}
 					onLoad={this.determineClassName}
 					src={this.props.image} ref="image" />
-		
+
 			);
 		}
 
@@ -52,13 +60,14 @@ Here, the reply form is introduced as a state that will change when you click th
 					replyComment:comment.id
 				});
 			}.bind(this);
-	
+
 		},
 
 		replyForm: function (comment) {
 			if (this.state.replyComment === comment.id) {
 				return(
-				<form className='comment-form' onSubmit={this.executeSubmit.bind(this, close)}>
+				<form className='comment-form'
+				onSubmit={this.executeSubmit.bind(this, close)}>
 					<CommentForm parent={comment} onOutsideClick={this._onOutsideClick}/>
 				</form>
 				);
@@ -66,7 +75,7 @@ Here, the reply form is introduced as a state that will change when you click th
 				return null;
 			}
 		},
-		
+
 		_onOutsideClick: function (e) {
 			var set = true;
 			for (var i = 0; i < e.path.length; i++) {
@@ -84,7 +93,7 @@ These functions handle the actual comment form that shows up and get rid of it i
 
 	render: function() {
 		var comments = this.state.comments.map( function (comment) {
-	
+
 			return (
 				<div key={comment.id}>
 					<Comment comment={comment} params={this.props.params} 		
@@ -104,7 +113,7 @@ These functions handle the actual comment form that shows up and get rid of it i
 			</div>
 		);
 	}
-	
+
 I then have the comments index render each comment, passing down the form toggle and reply form so that it can access the state changes even in the comment itself.
 
 		render: function() {
@@ -114,7 +123,7 @@ I then have the comments index render each comment, passing down the form toggle
 			childComments = this.props.comment.childComments.map( function (child) {
 				return(
 					<div key={child.id}>
-						<Comment comment={child} addForm={this.props.addForm} 
+						<Comment comment={child} addForm={this.props.addForm}
 						replyForm={this.props.replyForm} />
 					</div>
 					);
@@ -142,10 +151,10 @@ I then have the comments index render each comment, passing down the form toggle
 			</div>
 		);
 	}
-	
-And finally, the comments pass these props down to their child comments, rendering the child comments after themselves, and display the reply form in the appropriate place if the state matches their comment id. This way, we have a comment form that appears in the right spot when called, can actually add the comment in the right place, and goes away if you click outside of it.
 
-Features
+And finally, the comments pass these props down to their child comments, rendering the child comments after themselves, and display the reply form in the appropriate place if the state matches their comment id. This way, we have a comment form that appears in the right spot when called, can actually add the comment in the right place, and goes away if you click outside of it.
+__
+### Features
 
 - Users can sign in/sign up with either a custom username and password or their Facebook account.
 - The homepage shows all of the user-uploaded images.
@@ -155,10 +164,14 @@ Features
 - Users can view other people's images with the titles and descriptions, provided they are public.
 
 
-To-do
+###To-do
 
 - [ ] Implement an upvote/downvote system, which will also affect image/comment sorting
 - [ ] Infinite scroll for the index.
 - [ ] Albums which can hold images and display in sequence.
 - [ ] PG search.
 - [ ] Tags for images.
+
+
+[welcome]: ./app/assets/images/imgir_landing_page.png
+[image_show]: ./app/assets/images/imgir_image_show.png
