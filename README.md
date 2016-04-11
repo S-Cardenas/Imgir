@@ -153,7 +153,7 @@
 		}
 
 	And finally, the comments pass these props down to their child comments, rendering the child comments after themselves, and display the reply form in the appropriate place if the state matches their comment id. This way, we have a comment form that appears in the right spot when called, can actually add the comment in the right place, and goes away if you click outside of it.
-__
+
 ### Features
 
 - Users can sign in/sign up with either a custom username and password or their Facebook account.
