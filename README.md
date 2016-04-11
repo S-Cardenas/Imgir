@@ -157,8 +157,8 @@ Features
 
 To-do
 
-- [] Implement an upvote/downvote system, which will also affect image/comment sorting
-- [] Infinite scroll for the index.
-- [] Albums which can hold images and display in sequence.
-- [] PG search.
-- [] Tags for images.
+- [ ] Implement an upvote/downvote system, which will also affect image/comment sorting
+- [ ] Infinite scroll for the index.
+- [ ] Albums which can hold images and display in sequence.
+- [ ] PG search.
+- [ ] Tags for images.
