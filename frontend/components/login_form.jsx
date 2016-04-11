@@ -2,6 +2,7 @@ var React = require('react');
 var SessionUtil = require('../util/session_utils');
 var SessionStore = require('../stores/session_store');
 var Link = require('react-router').Link;
+var UserUtil = require('../util/user_utils');
 
 var LoginForm = React.createClass({
 	contextTypes : {
@@ -55,11 +56,12 @@ var LoginForm = React.createClass({
 	executeGuestLogin: function (e) {
 		e.preventDefault();
 		var router = this.context.router;
-
 		this.state.username = "Guest";
 		this.state.password = "1234567";
-		SessionUtil.login(this.state, function () {
-			router.push("/images");
+		UserUtil.createAccount(this.state, function(credentials) {
+			SessionUtil.login(credentials, function () {
+				router.push("/images");
+			});
 		});
 	},
 

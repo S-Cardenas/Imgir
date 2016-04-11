@@ -57,7 +57,7 @@ var Navbar = React.createClass({
 							{this.state.currentUser.username}
 							<ul className='nav-account-options'>
 								<li>
-									<Link to={"users/" + this.state.currentUser.id}>Your Images</Link>
+									<Link to={"/users/" + this.state.currentUser.id}>Your Images</Link>
 								</li>
 								<li>
 									<div className="nav-account-options-bottom">

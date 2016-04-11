@@ -29,6 +29,14 @@ class User < ActiveRecord::Base
 		)
 	end
 
+	def self.create_guest_username
+		username = "Guest_#{SecureRandom::base64(8)}"
+		while User.exists?(username: username)
+			username = "Guest_#{SecureRandom::base64(8)}"
+		end
+		username
+	end
+
 	def password=(pword)
 		self.password_digest = BCrypt::Password.create(pword)
 	end

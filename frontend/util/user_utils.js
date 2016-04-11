@@ -9,7 +9,7 @@ var UserUtil = {
 			data: {user: credentials},
 			success: function (user) {
 				// UserActions.userReceived(user);
-				callback && callback(credentials);
+				callback && callback({username: user.username, password: credentials.password});
 			}
 		});
 	},
@@ -26,7 +26,7 @@ var UserUtil = {
 				console.log("User's images couldn't be fetched");
 			}
 		});
-	}
+	},
 
 };
 
