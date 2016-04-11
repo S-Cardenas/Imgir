@@ -6,33 +6,33 @@
 
 Technical Details
 
-When Imgir displays images in their own show page, it has to be able to account for images of different dimensions all fitting within a reasonably-sized box. In order to do this, it has to figure out whether the image is larger or smaller than the frame, and then scale it down if it is larger. But of course, wider images need to scale differently than taller images, so I needed to use javascript to calculate whether I should shrink based on width or height. I found that the best way to do this was to use the Dom that the image constituted to get the dimensions, and then compare its width to its height.
+- When Imgir displays images in their own show page, it has to be able to account for images of different dimensions all fitting within a reasonably-sized box. In order to do this, it has to figure out whether the image is larger or smaller than the frame, and then scale it down if it is larger. But of course, wider images need to scale differently than taller images, so I needed to use javascript to calculate whether I should shrink based on width or height. I found that the best way to do this was to use the Dom that the image constituted to get the dimensions, and then compare its width to its height.
 
-componentDidMount: function() {
-	ReactDOM.findDOMNode(this.refs.image);
-},
+	componentDidMount: function() {
+		ReactDOM.findDOMNode(this.refs.image);
+	},
 
 
-determineClassName: function () {
-	var node = ReactDOM.findDOMNode(this.refs.image);
-	if (node.height > 600 || node.width > 500) {
-		if ((node.height/node.width) >= 600/500) {
-				this.setState({classname: 'image-show-item-tall'});
-		} else {
-			this.setState({classname: 'image-show-item-wide'});
+	determineClassName: function () {
+		var node = ReactDOM.findDOMNode(this.refs.image);
+		if (node.height > 600 || node.width > 500) {
+			if ((node.height/node.width) >= 600/500) {
+					this.setState({classname: 'image-show-item-tall'});
+			} else {
+				this.setState({classname: 'image-show-item-wide'});
+			}
 		}
+	},
+
+	render: function() {
+		return (
+	
+			<img className={this.state.classname}
+				onLoad={this.determineClassName}
+				src={this.props.image} ref="image" />
+	
+		);
 	}
-},
-
-render: function() {
-	return (
-
-		<img className={this.state.classname}
-			onLoad={this.determineClassName}
-			src={this.props.image} ref="image" />
-
-	);
-}
 
 The state then determines which classname I use for the given image, which allows me use CSS to scale them properly. I could then put this new component into the image_show component that would display an individual image. If the image was smaller than the frame, it was centered and put against a black background, as is true with Imgur.
 
