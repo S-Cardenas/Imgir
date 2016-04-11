@@ -4,120 +4,52 @@
 
 [heroku]: http://imgir.herokuapp.com
 
-## Minimum Viable Product
+Technical Details
 
-Imgir is a web application clone of Imgur, built on rails and React.js, but with an Invader Zim theme. Imgir allows its users to:
+When Imgir displays images in their own show page, it has to be able to account for images of different dimensions all fitting within a reasonably-sized box. In order to do this, it has to figure out whether the image is larger or smaller than the frame, and then scale it down if it is larger. But of course, wider images need to scale differently than taller images, so I needed to use javascript to calculate whether I should shrink based on width or height. I found that the best way to do this was to use the Dom that the image constituted to get the dimensions, and then compare its width to its height.
 
-- [X] Create an account
-- [X] Log in / Log out
-- [X] Create, read, edit, and delete images
-- [X] Comment on images
-- [ ] Organize image within albums
-- [ ] Upvote and downvote content
-
-## Design Docs
-* [View Wireframes][views]
-* [React Components][components]
-* [Flux Stores][stores]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
-
-[views]: ./wireframes
-[components]: ./components.md
-[stores]: ./stores.md
-[api-endpoints]: ./api-endpoints.md
-[schema]: ./schema.md
-
-## Implementation Timeline
-
-### Phase 1: Backend setup and User Authentication (0.5 days)
-
-**Objective:** Functioning rails project with Authentication
-
-- [X] create new project
-- [X] create `User` model
-- [X] authentication
-- [X] user signup/signin pages
-- [X] blank landing page after signin
-- [X] other pages redirect until signin
-
-### Phase 2: Image Model and API with basic index. (1.5 days)
-
-**Objective:** Images can be created, invidually viewed, have their options edited and be destroyed through the API and the homepage has current images.
-
-- [X] create `Image` model
-- [X] seed the database with a small amount of test data
-- [ ] CRUD API for images (`ImagesController`)
-- [ ] jBuilder views for images with a basic index.
-- [X] setup Webpack & Flux scaffold
-- [ ] test making images using the API
-- [ ] setup index to display images without titles that link to their show pages
-### Phase 3: Add Albums (0.5 days)
-
-**Objective:** Images can be uploaded as albums and put together with other images. Albums are accessible on the front page by displaying their first image.
-
-- [ ] Create `Album` model
-- [ ] Do CRUD for `Album`
--	[ ] Seed database with Albums for testing
-- [ ] Use jBuilder views to allow users to more easily view collections of images
-- [ ] Test creating, editing, and destroying albums.
-
-### Phase 4: Set up React/Flux to allow users to more easily interact with images and albums (1 day)
-
-**Objective** Frontend UI allows for users to easily create, update, and destroy images or albums.
-
-- implement each image component, building out the flux loop as needed.
-- [ ] `Homepage`
-- [ ] `HomepageItem`
-- [ ] `ImageForm`
-- [ ] `ImagePage`
-- [ ] test each component by creating images. Functionality should not change, only the frontend.
-
-### Phase 5: Start Styling (0.5 days)
-
-**Objective:** Existing pages (including singup/signin) will look good.
-
-- [ ] format homepage to show the collection of images in way that is intuitive and easy to view.
-- [ ] add navbar with both authentication and image creation.
-- [ ] add basic colors & styles
+componentDidMount: function() {
+	ReactDOM.findDOMNode(this.refs.image);
+},
 
 
-### Phase 6: Comments (1 day)
+determineClassName: function () {
+	var node = ReactDOM.findDOMNode(this.refs.image);
+	if (node.height > 600 || node.width > 500) {
+		if ((node.height/node.width) >= 600/500) {
+				this.setState({classname: 'image-show-item-tall'});
+		} else {
+			this.setState({classname: 'image-show-item-wide'});
+		}
+	}
+},
 
-**Objective:** Allow users to add comments to images and albums and upvote or downvote both images and comments.
+render: function() {
+	return (
 
-- [ ] create `Comment` model and join table
-- build out API, Flux loop, and components for:
-  - [ ] fetching comments for an image or album
-  - [ ] adding or removing comments on images
-	-	[ ] sorting comments by popularity
-- [ ] create a show submission/comment history view for users
-- [ ] Style comments and history
+		<img className={this.state.classname}
+			onLoad={this.determineClassName}
+			src={this.props.image} ref="image" />
 
-### Phase 7: Advance Homepage Frontend (1 day)
+	);
+}
 
-**objective:** Complete the homepage
+The state then determines which classname I use for the given image, which allows me use CSS to scale them properly. I could then put this new component into the image_show component that would display an individual image. If the image was smaller than the frame, it was centered and put against a black background, as is true with Imgur.
 
-- [ ] add the sidebar to the homepage with recent popular images (high net upvotes)
-- [ ] allow for infinite scroll through recent images.
-- [ ] finish styling homepage
+Features
 
-### Phase 8: Styling Cleanup and Seeding (1 day)
+- Users can sign in/sign up with either a custom username and password or their Facebook account.
+- The homepage shows all of the user-uploaded images.
+- Users can upload their own images.
+- Users can also edit their images to give them a title/descripton, make them public, and destroy them.
+- Users can comment on other people's public images and also reply to those comments.
+- Users can view other people's images with the titles and descriptions, provided they are public.
 
-**objective:** Make the site feel more cohesive and awesome.
 
-- [ ] Get feedback on my UI from others
-- [ ] Refactor views and CSS to make it more cohesive
-- [ ] Build React Authentication.
+To-do
 
-### Bonus Features (TBD)
-- [ ] Tags on images
-- [ ] A search function for both images by title and users by username.
-- [ ] Additional sorting methods for images, such as both recent and popular
-- [ ] Multiple sessions
-
-[phase-one]: ./docs/phases/phase1.md
-[phase-two]: ./docs/phases/phase2.md
-[phase-three]: ./docs/phases/phase3.md
-[phase-four]: ./docs/phases/phase4.md
-[phase-five]: ./docs/phases/phase5.md
+- [] Implement an upvote/downvote system, which will also affect image/comment sorting
+- [] Infinite scroll for the index.
+- [] Albums which can hold images and display in sequence.
+- [] PG search.
+- [] Tags for images.
