@@ -35,11 +35,11 @@ image11 = Image.create!(title:"Bloaty's Hot Bod", user_id: user7.id, private: fa
 
 image12 = Image.create!(title:"Best Buds", user_id: user2.id, private: false, description: "Adorable.", img: File.open("app/assets/images/gaz_angry_at_gir.png"))
 
-image13 = Image.create!(title:"I am Gotham's Reckoning", user_id: user6.id, private: false, description: "Oh, you think the darkness is your ally. But you merely adopted the darkness. I was born in it, molded by it. I didn't see the light until I was already a man, by then it was nothing to me but BLINDING. The shadows betray you, because they belong to me!", img: File.open("app/assets/images/tak.jpg"))
+image13 = Image.create!(title:"I am Gotham's Reckoning", user_id: user6.id, private: false, description: "Oh, you think the darkness is your ally. But you merely adopted the darkness. I was born in it, moulded by it. I didn't see the light until I was already a man, by then it was nothing to me but BLINDING. The shadows betray you, because they belong to me!", img: File.open("app/assets/images/tak.jpg"))
 
 image14 = Image.create!(title:"President Man for President", user_id: user5.id, private: false, description: "If you don't like politics, there's always this guy.", img: File.open("app/assets/images/president_man_by_greasedupdeafguy.jpg"))
 
-image15 = Image.create!(title:"Mimi the SIR", user_id: user7.id, private: true, description: "The best of SIRs. Way better than GIR.", img: File.open("app/assets/images/sir_mimi.png"))
+image15 = Image.create!(title:"Mimi the SIR", user_id: user6.id, private: true, description: "The best of SIRs. Way better than GIR.", img: File.open("app/assets/images/sir_mimi.png"))
 
 
 

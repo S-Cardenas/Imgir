@@ -1,10 +1,18 @@
 class Api::ImagesController < ApplicationController
 
 	def index
-		@images = Image
-			.includes(:user)
-			.where("private = false OR user_id = ?", current_user.id).order(created_at: :desc)
-		render :index
+		if current_user
+			@images = Image
+				.includes(:user)
+				.where("private = false OR user_id = ?", current_user.id).order(created_at: :desc)
+			render :index
+		else
+			@images = Image
+				.includes(:user)
+				.where("private = false")
+				.order(created_at: :desc)
+			render :index
+		end
 	end
 
 	def show

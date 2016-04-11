@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactRouter = require('react-router');
 var SessionStore = require('../stores/session_store');
 var SessionUtil = require('../util/session_utils');
 var Link = require('react-router').Link;
@@ -33,7 +34,11 @@ var Navbar = React.createClass({
 	},
 
 	handleClickImageForm: function (e) {
-		ModalAction.setModal(<ImageForm />);
+		if (SessionStore.currentUser()) {
+			ModalAction.setModal(<ImageForm />);
+		} else {
+			this.context.router.push('/login');
+		}
 	},
 
 	render: function() {
@@ -68,9 +73,6 @@ var Navbar = React.createClass({
 							</ul>
 						</div>
 						< Search />
-
-
-
 					</div>
 				);
 			}
@@ -95,5 +97,6 @@ var Navbar = React.createClass({
 	}
 
 });
+
 
 module.exports = Navbar;

@@ -62,8 +62,8 @@ $(document).ready(function () {
 	ReactDOM.render(
 		<Router history={browserHistory}>
 			<Route path= "/" component={Imgir}>
-				<IndexRoute component={LoginForm} />
-				<Route path= "images" component={ImageIndex} onEnter={_requireLoggedIn} />
+				<IndexRoute component={ImageIndex} />
+				<Route path= "images" component={ImageIndex} />
 				<Route path= "images/new" component={ImageForm} />
 				<Route path= "images/:id" component={ImageShow}>
 					<Route path= "edit"	component={ImageEditForm}
@@ -79,20 +79,3 @@ $(document).ready(function () {
 
 
 });
-
-
-function _requireLoggedIn(nextState, replace, asyncCompletionCallback) {
-  if (!SessionStore.currentUserHasBeenFetched()) {
-    SessionUtil.fetchCurrentUser(_redirectIfNotLoggedIn);
-  } else {
-    _redirectIfNotLoggedIn();
-  }
-
-  function _redirectIfNotLoggedIn() {
-    if (!SessionStore.isLoggedIn()) {
-      replace("/login");
-    }
-
-    asyncCompletionCallback();
-  }
-}

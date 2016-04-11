@@ -78,6 +78,13 @@ var UserImagesShow = React.createClass({
 				</div>
 			);
 		}.bind(this));
+		if (images.length === 0) {
+			images = (
+					<div className="no-images-show">
+						No Images
+					</div>
+				);
+		}
 		return (
 			<div className='user-images-display group'>
 				<div className='image-index user-index group'>
