@@ -1,29 +1,44 @@
 var React = require('react');
+var Link = require('react-router').Link;
+
 var CommentUtils = require('../util/comment_utils');
 var CommentStore = require('../stores/comment_store');
 var CommentForm = require('./comment_form');
-var Link = require('react-router').Link;
 var Comment = require('./comment');
+
+var ImageResizer = require('./image_resizer');
+
+var UserUtils = require('../util/user_utils');
+var UserCommentStore = require('../stores/user_comment_store');
 
 var Comments = React.createClass({
 
 	getInitialState: function() {
+    var utils;
+    var store;
+    if (this.props.parentType === "user") {
+      utils = UserUtils;
+      store = UserCommentStore;
+    } else {
+      utils = CommentUtils;
+      store = CommentStore;
+    }
 		return {
-			comments: CommentStore.all(), replyComment: null
+			comments: store.all(), replyComment: null, utils: utils, store: store
 		};
 	},
 
 	componentDidMount: function() {
-		this.CommentStoreToken = CommentStore.addListener(this._onChange);
-		CommentUtils.fetchComments(this.props.params.id);
+		this.storeToken = this.state.store.addListener(this._onChange);
+		this.state.utils.fetchComments(this.props.params.id);
 	},
 
 	componentWillUnmount: function() {
-		this.CommentStoreToken.remove();
+		this.storeToken.remove();
 	},
 
 	_onChange: function () {
-		this.setState({comments: CommentStore.all()});
+		this.setState({comments: this.state.store.all()});
 	},
 
 
@@ -31,9 +46,17 @@ var Comments = React.createClass({
 		e.preventDefault();
 		e = e.currentTarget;
 		var comment = {body: e[0].value, parent_comment_id: e[1].value};
+    var image_id;
+    if (e[2]) {
+      imageId = e[2].value;
+    }
 		e.reset();
-		CommentUtils.createNewComment(comment, this.props.params.id);
-		CommentUtils.fetchComments(this.props.params.id);
+    if (this.props.parentType === "image") {
+  		CommentUtils.createNewComment(comment, this.props.params.id);
+    } else if (this.props.parentType === "user"){
+      CommentUtils.createNewComment(comment, imagId);
+    }
+    this.state.utils.fetchComments(this.props.params.id);
 		if (close) {
 			this.setState({replyComment:null});
 		}
@@ -73,24 +96,58 @@ var Comments = React.createClass({
 
 
 	render: function() {
+    var thumb;
 		var comments = this.state.comments.map( function (comment) {
+      var floaters;
+      if (this.props.parentType === "image") {
+        thumb = <div></div>;
+          floaters = false;
+        } else {
+          var showUrl = "images/" + comment.image.id;
+          thumb = <div className="comment-thumb">
+              <Link
+              to={showUrl}>
+                <ImageResizer
+                image={comment.image.image_url}
+                class1="image-index-item-tall"
+                class2="image-index-item-wide"/>
+              </Link>
+            </div>;
+          floaters = true;
+      }
 
 			return (
-				<div key={comment.id}>
-					<Comment comment={comment} params={this.props.params} addForm={this.toggleForm} replyForm={this.replyForm}/>
+				<div key={comment.id} className="comment group">
+          {thumb}
+					<Comment comment={comment}
+          params={this.props.params}
+          addForm={this.toggleForm}
+          replyForm={this.replyForm}
+          floaters={floaters}
+          />
 
 				</div>
 			);
 		}.bind(this));
+    var commentDisplay;
+    if (this.props.parentType === "image") {
+      commentDisplay =
+      <div>
+        <div className='comment-counter'>
+          {comments.length} parent comments
+        </div>
+        <form className='comment-form' onSubmit={this.executeSubmit.bind(this, null)}>
+          <CommentForm />
+        </form>
+        {comments}
+      </div>
+      ;
+    } else {
+      commentDisplay = <div className="user-show-comments">{comments}</div>;
+    }
 		return (
 			<div>
-				<form className='comment-form' onSubmit={this.executeSubmit.bind(this, null)}>
-					<CommentForm />
-				</form>
-				<div className='comment-counter'>
-					{comments.length} parent comments
-				</div>
-				{comments}
+        {commentDisplay}
 			</div>
 		);
 	}

@@ -10,7 +10,15 @@ var UserActions = {
 			user: user
 		};
 		AppDispatcher.dispatch(action);
-	}
+	},
+
+  commentsReceived: function (user) {
+    var action = {
+      actionType: UserConstants.USER_COMMENTS_RECEIVED,
+      user: user
+    };
+    AppDispatcher.dispatch(action);
+  }
 };
 
 module.exports = UserActions;

@@ -16,6 +16,16 @@ var CommentForm = React.createClass({
 
 	render: function() {
 		var parent = (this.props.parent) ?	 this.props.parent.id :	null;
+    var parent_image_id;
+    if (parent) {
+      image_id = <input type="hidden"
+      name="comment[parent_image_id]"
+      value={this.props.parent.image_id}
+      >
+      </input>;
+    } else {
+      image_id = <div></div>;
+    }
 		return (
 			<div className="comment-form-fields group">
 				<textarea
@@ -29,6 +39,7 @@ var CommentForm = React.createClass({
 					value={parent}
 					>
 				</input>
+        {image_id}
 				<button>Save</button>
 			</div>
 		);

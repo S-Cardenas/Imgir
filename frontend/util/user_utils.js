@@ -28,6 +28,21 @@ var UserUtil = {
 		});
 	},
 
+  fetchComments: function(id) {
+    $.ajax({
+      type: 'GET',
+      url: "/api/users/" + id,
+      dataType: "json",
+      success: function (user) {
+        UserActions.commentsReceived(user);
+      },
+      error: function () {
+        console.log("User's comments couldn't be fetched");
+      }
+
+    });
+  }
+
 };
 
 module.exports = UserUtil;

@@ -36,9 +36,10 @@ var Comment = React.createClass({
 					);
 			}.bind(this));
 		}
+    var floater = this.props.floaters ? " floater" : "";
 		var userShowUrl = "/users/" + comment.user.id;
 		return (
-			<div className='full-comment'>
+			<div className={'full-comment' + floater}>
 				<div className='comment-item'  >
 					<div className='comment-user-and-reply group'>
 						<div className='comment-user comment-link'>

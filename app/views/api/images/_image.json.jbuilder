@@ -9,8 +9,10 @@ if show_user
 	end
 end
 
-json.comments do
-	json.array!(image.comments_by_parent[nil]) do |top_level_comment|
-		json.partial!('api/comments/comment', comment: top_level_comment, show_user: true, comments_by_parent: image.comments_by_parent)
-	end
+if show_comments
+  json.comments do
+  	json.array!(image.comments_by_parent[nil]) do |top_level_comment|
+  		json.partial!('api/comments/comment', comment: top_level_comment, show_user: true, comments_by_parent: image.comments_by_parent, show_image: false)
+  	end
+  end
 end

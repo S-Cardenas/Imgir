@@ -29,7 +29,7 @@ var UserForm = React.createClass({
 					<input onChange={this.updatePassword}
 						type="password"
 						value={this.state.password}
-						placeholder='Password' />
+						placeholder='Password (7 characters minimum)' />
 					<Link className='account-signup-link'
 						to="/login">Already have an account?
 					</Link>

@@ -113,7 +113,7 @@ var ImageShow = React.createClass({
 				}
 			} else {
 				var uploader = (image.user ? image.user.username : "");
-				var uploaderShow = (image.user ? ("users/" + image.user.id) : "");
+				var uploaderShow = (image.user ? ("/users/" + image.user.id) : "");
 				return (
 					<div className='image-show-content'>
 						{this.props.children}
@@ -134,7 +134,7 @@ var ImageShow = React.createClass({
 							</div>
 						</div>
 						<div className='comments-section image-show'>
-							<Comments params={this.props.params}/>
+							<Comments params={this.props.params} parentType={"image"}/>
 						</div>
 					</div>
 				);

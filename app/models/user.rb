@@ -25,14 +25,14 @@ class User < ActiveRecord::Base
 		User.create(
 			provider: provider,
 			uid: uid,
-			username: "#{auth_hash[:extra][:raw_info][:name]}" + "_"  + "#{SecureRandom::base64(6)}"
+			username: "#{auth_hash[:extra][:raw_info][:name]}" + "_"  + "#{SecureRandom::random_number(100000)}"
 		)
 	end
 
 	def self.create_guest_username
-		username = "Guest_#{SecureRandom::base64(8)}"
+		username = "Guest_#{SecureRandom::random_number(100000)}"
 		while User.exists?(username: username)
-			username = "Guest_#{SecureRandom::base64(8)}"
+			username = "Guest_#{SecureRandom::random_number(100000)}"
 		end
 		username
 	end

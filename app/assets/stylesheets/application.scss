@@ -165,6 +165,7 @@ body {
 }
 
 .search-form > input:focus {
+  transition-duration: .5s;
 	width:495px;
 	outline: none;
 	border:none;
@@ -213,7 +214,7 @@ body {
 	display: block;
 	color: #fff;
 	background: #212121;
-
+  width: 250px;
 	font-size: 12px;
 	margin-bottom: 10px;
 	padding: 5px 10px;
@@ -398,21 +399,26 @@ body {
 	width: 180px;
 	border: 2px solid #999;
 	margin: 10px;
-	outline: 1px solid #121211;
-	outline-offset: -2px;
+
 	background: #fff;
 	position: relative;
 }
 
-
 .image-index-item-wide{
 	height:180px;
-	width: 100%;
+	width: auto;
+  outline: 1px solid #121211;
+  outline-offset: -1px;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .image-index-item-tall{
 	width: 180px;
-	height: 100%;
+  margin-top: 50%;
+  transform: translateY(-50%);
+  outline: 1px solid #121211;
+  outline-offset: -1px;
 }
 
 .index-no-overflow {
@@ -811,6 +817,7 @@ body {
 }
 
 .full-comment {
+
 	margin-left:20px;
 	padding: 10px 0 0px 10px
 
@@ -872,4 +879,47 @@ body {
 	top: 0;
 	bottom: 0;
 	z-index: 2;
+}
+
+/*USER DISPLAY PAGE*/
+
+.user-show {
+  margin: 40px auto;
+  border-radius: 5px;
+  width: 650px;
+  padding: 25px;
+}
+
+.user-show-comment-header {
+  padding: 10px;
+  background: #181817;
+  border-radius: 4px;
+  color: #ddddd1;
+  font-weight: 700;
+}
+
+.comment-thumb {
+  margin-top: 10px;
+  float: left;
+  height: 70px;
+  width: 70px;
+}
+
+.comment-thumb > a > img {
+  height: 100%;
+  width: 100%;
+}
+
+.comment-thumb > a > img:hover {
+  border: 2px solid #C29F37;
+}
+
+.floater {
+  float: left;
+  width: 570px;
+  margin-left: 0;
+}
+
+.user-show-comments {
+
 }

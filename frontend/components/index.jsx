@@ -2,7 +2,7 @@ var React = require('react');
 var ImageUtils = require('../util/api_utils');
 var ImageStore = require('../stores/image_store');
 var Link = require('react-router').Link;
-var ImageIndexItem = require('./image_index_item');
+var ImageResizer = require('./image_resizer');
 var SessionStore = require('../stores/session_store');
 
 var React = require('react');
@@ -27,13 +27,12 @@ var ImageIndex = React.createClass({
 
 	render: function() {
 		var images = this.state.images.map( function (image) {
-			var uploader = (image.user ? image.user.username : "");
 			var showUrl = "/images/" + image.id;
 			return(
 				<div className='image-index-item' key={image.id}>
 					<div className='image-index-title'>{image.title}</div>
 					<div className='index-no-overflow'>
-						<Link to={showUrl}>< ImageIndexItem image={image.image_url} /> </Link>
+						<Link to={showUrl}><ImageResizer image={image.image_url} class1="image-index-item-tall" class2="image-index-item-wide"/> </Link>
 
 					</div>
 				</div>
