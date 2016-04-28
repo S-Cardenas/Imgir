@@ -7,6 +7,9 @@ class Api::CommentsController < ApplicationController
 	end
 
 	def create
+    unless current_user
+      render json: { message: "Go log in." }, status: 401
+    end
 		@comment = current_user.comments.new(comment_params)
 		@comment.image_id = params[:image_id]
 		if @comment.save

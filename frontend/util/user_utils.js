@@ -8,8 +8,7 @@ var UserUtil = {
 			dataType: "json",
 			data: {user: credentials},
 			success: function (user) {
-				// UserActions.userReceived(user);
-				callback && callback({username: user.username, password: credentials.password});
+				callback && callback({username: credentials.username, password: credentials.password});
 			}
 		});
 	},

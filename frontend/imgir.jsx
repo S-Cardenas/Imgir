@@ -15,6 +15,7 @@ var SessionUtil = require('./util/session_utils');
 var SignupForm = require('./components/signup_form');
 
 var NavBar = require('./components/navbar');
+var Search = require('./components/search');
 
 var ModalStore = require('./stores/modal_store');
 
@@ -71,6 +72,7 @@ $(document).ready(function () {
 				</Route>
 				<Route path= "users/new" component={SignupForm} />
 				<Route path= "users/:id" component={UserImagesShow}/>
+        <Route path= "search" component={Search} />
 				<Route path="login" component={LoginForm}/>
 			</Route>
 		</Router>,

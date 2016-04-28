@@ -3,7 +3,7 @@ json.extract!(
 	:id, :body, :user_id, :image_id, :created_at
 )
 
-if show_user
+if show_user ||= false
 	json.user do
 		json.partial!('api/users/user', user: comment.user, show_images: false)
 	end

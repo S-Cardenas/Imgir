@@ -1,4 +1,7 @@
 class Comment < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: [:body]
+  
 	validates :body, :user_id, :image_id, presence: true;
 
 	belongs_to :image

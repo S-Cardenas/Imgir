@@ -6,10 +6,9 @@ class Api::UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
-		if @user.username = "Guest"
+		if @user.username == "Guest"
 			@user.username = User.create_guest_username
 		end
-
 		if @user.save
 			login!(@user)
 			render json: @user

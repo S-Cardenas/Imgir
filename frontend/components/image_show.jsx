@@ -15,6 +15,7 @@ var ImageShow = React.createClass({
 		router: React.PropTypes.object.isRequired
 	},
 
+
 	getInitialState: function() {
 		var imageId = this.props.imageid || this.props.params.id;
 		return { image: ImageStore.find(imageId)};
@@ -22,9 +23,13 @@ var ImageShow = React.createClass({
 
 	componentDidMount: function() {
 		var imageId = this.props.imageid || this.props.params.id;
+    this.ImageStoreToken = ImageStore.addListener(this._onChange);
 		ImageUtils.fetchOneImage(imageId);
-		this.ImageStoreToken = ImageStore.addListener(this._onChange);
 	},
+
+  componentWillReceiveProps: function(nextProps) {
+    ImageUtils.fetchOneImage(nextProps.params.id);
+  },
 
 	componentWillUnmount: function() {
 		this.ImageStoreToken.remove();

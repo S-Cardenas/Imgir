@@ -180,6 +180,43 @@ body {
 	outline: none;
 }
 
+.search-form:focus > input {
+  transition-duration: .5s;
+  width:495px;
+  outline: none;
+  border:none;
+  border-bottom: 4px solid #B5A10F;
+}
+
+.search-form:active > input {
+  transition-duration: .5s;
+  width:495px;
+  outline: none;
+  border:none;
+  border-bottom: 4px solid #B5A10F;
+}
+
+.search-form:hover > input {
+  transition-duration: .5s;
+  width:495px;
+  outline: none;
+  border:none;
+  border-bottom: 4px solid #B5A10F;
+}
+
+.search-result-list {
+  position: absolute;
+  background: #181817;
+  z-index: 20;
+  border-left: 1px solid #444442;
+  border-right: 1px solid #444442;
+}
+
+.search-result-list > li {
+  padding: 10px 20px;
+  border-bottom: 1px solid #444442
+}
+
 .nav-account-name {
 	float: right;
 	padding:10px;
@@ -612,6 +649,7 @@ body {
 	float:right;
 	position: absolute;
 	top: 50%;
+  transform: translateY(-50%);
 	left: 68%;
 
 }
@@ -634,7 +672,7 @@ body {
 .image-show-image-container:hover > .image-details-bar{
 	display: block;
 	opacity: 1;
-	background-color: rgba(0,0,0,.6);
+	background-color: rgba(0,0,0,.8);
 }
 
 .image-details-uploader {
@@ -663,13 +701,13 @@ body {
 	top: 100px;
 	border: 2px solid #444442;
 	border-radius: 6px;
-	width: 300px;
+	width: 400px;
 	z-index: 9001;
 
 }
 
 .image-edit-header {
-	width: 298px;
+	width: 399px;
 	height: 40px;
 	float: left;
 	background: #232323;
@@ -695,7 +733,7 @@ body {
 }
 
 .image-edit-input {
-	width: 258px;
+	width: 358px;
 	background: #121211;
 	font-size: 14px;
 	border: 1px solid #999;
@@ -782,7 +820,16 @@ body {
 	border: 1px solid #665d32;
 }
 
+.comment-form-fields > textarea:focus ~ button {
+  display: block;
+}
+
+.comment-form-fields > button:active {
+  display: block;
+}
+
 .comment-form-fields > button {
+  display: none;
 	border-width: 2px;
 	background: linear-gradient(to bottom,#595959 0,#404040 100%);
 	padding: 10px 20px;
@@ -869,6 +916,10 @@ body {
 	position: relative;
 	left: 100%;
 	transform: translateX(-100%)
+}
+
+.create-album-button {
+  display: none;
 }
 
 .modal {

@@ -11,7 +11,14 @@ var ImageResizer = require('./image_resizer');
 var UserUtils = require('../util/user_utils');
 var UserCommentStore = require('../stores/user_comment_store');
 
+var SessionUtil = require('../util/session_utils');
+var SessionStore = require('../stores/session_store');
+
 var Comments = React.createClass({
+
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
 
 	getInitialState: function() {
     var utils;
@@ -31,6 +38,7 @@ var Comments = React.createClass({
 	componentDidMount: function() {
 		this.storeToken = this.state.store.addListener(this._onChange);
 		this.state.utils.fetchComments(this.props.params.id);
+    SessionUtil.fetchCurrentUser();
 	},
 
 	componentWillUnmount: function() {
@@ -51,10 +59,14 @@ var Comments = React.createClass({
       imageId = e[2].value;
     }
 		e.reset();
-    if (this.props.parentType === "image") {
-  		CommentUtils.createNewComment(comment, this.props.params.id);
-    } else if (this.props.parentType === "user"){
-      CommentUtils.createNewComment(comment, imagId);
+    if (SessionStore.currentUser()) {
+      if (this.props.parentType === "image") {
+        CommentUtils.createNewComment(comment, this.props.params.id);
+      } else if (this.props.parentType === "user"){
+        CommentUtils.createNewComment(comment, imagId);
+      }
+    } else {
+      this.context.router.push("/login");
     }
     this.state.utils.fetchComments(this.props.params.id);
 		if (close) {
@@ -133,12 +145,12 @@ var Comments = React.createClass({
     if (this.props.parentType === "image") {
       commentDisplay =
       <div>
-        <div className='comment-counter'>
-          {comments.length} parent comments
-        </div>
         <form className='comment-form' onSubmit={this.executeSubmit.bind(this, null)}>
           <CommentForm />
         </form>
+        <div className='comment-counter'>
+          {comments.length} parent comments
+        </div>
         {comments}
       </div>
       ;

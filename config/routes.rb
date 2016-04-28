@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 		end
 		resource :session, only: [:new, :show, :create, :destroy]
 		resources :albums, except: [:new, :edit]
+    resources :searches, only: [:index]
 	end
 
 	get "auth/facebook/callback", to: "omniauth#facebook"
