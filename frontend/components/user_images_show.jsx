@@ -30,11 +30,11 @@ var UserImagesShow = React.createClass({
     var currentUser = SessionStore.currentUser();
     if (currentUser && currentUser.id === parseInt(this.props.params.id)) {
       return (
-        < SelfShow id={this.props.params.id}/>
+        < SelfShow paramId={this.props.params.id}/>
       );
     } else {
       return (
-        < OtherUserShow id={this.props.params.id}/>
+        < OtherUserShow paramId={this.props.params.id}/>
       );
     }
   }

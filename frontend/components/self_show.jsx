@@ -19,8 +19,8 @@ var SelfShow = React.createClass({
 	},
 
 	componentDidMount: function() {
-		UserUtil.fetchImages(this.props.id);
-		this.userImagesToken = UserImageStore.addListener(this._onChange);
+    this.userImagesToken = UserImageStore.addListener(this._onChange);
+		UserUtil.fetchImages(this.props.paramId);
 	},
 
   componentWillReceiveProps: function(nextProps) {

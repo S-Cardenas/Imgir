@@ -14,7 +14,7 @@ var OtherUserShow = React.createClass({
 
 	componentDidMount: function() {
     this.userCommentsToken = UserCommentStore.addListener(this._onChange);
-    UserUtil.fetchComments(this.props.id);
+    UserUtil.fetchComments(this.props.paramId);
 	},
 
   componentWillReceiveProps: function(nextProps) {
@@ -34,7 +34,7 @@ var OtherUserShow = React.createClass({
 
 	render: function() {
 
-    var params = {id: this.props.id};
+    var params = {id: this.props.paramId};
     return (
 
       <div className="comments-section user-show">
