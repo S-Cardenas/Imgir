@@ -23,6 +23,10 @@ var SelfShow = React.createClass({
 		this.userImagesToken = UserImageStore.addListener(this._onChange);
 	},
 
+  componentWillReceiveProps: function(nextProps) {
+    UserUtil.fetchImages(nextProps.id);
+  },
+
 	componentWillUnmount: function() {
 		this.userImagesToken.remove();
 	},

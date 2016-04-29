@@ -1,9 +1,14 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var SearchResultsStore = require("../stores/search_results_store");
 var SearchUtil = require("../util/search_utils");
 var Link = require('react-router').Link;
 
 var Search = React.createClass({
+
+  contextTypes: {
+		router: React.PropTypes.object.isRequired
+	},
 
   getInitialState: function() {
     return {
@@ -43,25 +48,34 @@ var Search = React.createClass({
     SearchUtil.search(meta.query, meta.page + 1);
   },
 
+  executeSearch: function (result, e) {
+    e.preventDefault();
+    SearchResultsStore.clear();
+    ReactDOM.findDOMNode(this.refs.searchQuery).value = "";
+    this.setState({ query: "" });
+    this.context.router.push("/images/" + result.id);
+  },
+
 
   resultList: function () {
+    var that = this;
     return SearchResultsStore.all().map(function (result) {
       if (result._type === "Image") {
         return (
           <li key={ result.id + "Image" }>
-            <Link to={"/images/" + result.id} onClick={SearchResultsStore.clear}>Image, Title: {result.title}</Link>
+            <button onClick={that.executeSearch.bind(that, result)}>Image, Title: {result.title}</button>
           </li>
         );
       } else if (result._type === "User") {
         return (
           <li key= { result.id + "User"}>
-            <Link to={"/users/" + result.id}>User, Username: {result.username}</Link>
+            <button onClick={that.executeSearch.bind(that, result)}>User, Username: {result.username}</button>
           </li>
         );
       } else if (result._type === "Comment") {
         return (
           <li key= {result.id + "Comment"}>
-            <Link to={"/images/" + result.image_id}> Comment, Body: {result.body} </Link>
+            <button onClick={that.executeSearch.bind(that, result)}> Comment, Body: {result.body} </button>
           </li>
         );
       }
@@ -92,7 +106,7 @@ var Search = React.createClass({
 		return (
 			<div className= 'search-form'>
 				<input type="text"
-					placeholder="search" onChange={ this.handleInputChange}></input>
+					placeholder="search" ref="searchQuery" onChange={ this.handleInputChange}></input>
         <button onClick={ this.search }><i className="fa fa-search"></i></button>
 
 

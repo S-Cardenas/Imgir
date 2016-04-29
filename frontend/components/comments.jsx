@@ -38,7 +38,6 @@ var Comments = React.createClass({
 	componentDidMount: function() {
 		this.storeToken = this.state.store.addListener(this._onChange);
 		this.state.utils.fetchComments(this.props.params.id);
-    SessionUtil.fetchCurrentUser();
 	},
 
 	componentWillUnmount: function() {

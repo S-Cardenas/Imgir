@@ -17,6 +17,7 @@ var UserImagesShow = React.createClass({
     this.sessionStoreToken = SessionStore.addListener(this._onChange);
   },
 
+
   componentWillUnmount: function() {
     this.sessionStoreToken.remove();
   },

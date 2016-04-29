@@ -13,8 +13,8 @@ var ImageIndex = React.createClass({
 	},
 
 	componentDidMount: function() {
+    this.ImageStoreToken = ImageStore.addListener(this._onChange);
 		ImageUtils.fetchImages();
-		this.ImageStoreToken = ImageStore.addListener(this._onChange);
 	},
 
 	componentWillUnmount: function() {

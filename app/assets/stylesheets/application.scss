@@ -180,23 +180,8 @@ body {
 	outline: none;
 }
 
-.search-form:focus > input {
-  transition-duration: .5s;
-  width:495px;
-  outline: none;
-  border:none;
-  border-bottom: 4px solid #B5A10F;
-}
 
 .search-form:active > input {
-  transition-duration: .5s;
-  width:495px;
-  outline: none;
-  border:none;
-  border-bottom: 4px solid #B5A10F;
-}
-
-.search-form:hover > input {
   transition-duration: .5s;
   width:495px;
   outline: none;

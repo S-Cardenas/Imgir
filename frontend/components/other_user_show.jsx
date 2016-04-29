@@ -17,6 +17,10 @@ var OtherUserShow = React.createClass({
     UserUtil.fetchComments(this.props.id);
 	},
 
+  componentWillReceiveProps: function(nextProps) {
+    UserUtil.fetchComments(nextProps.id);
+  },
+
 	componentWillUnmount: function() {
 		this.userCommentsToken.remove();
 	},
