@@ -48,12 +48,12 @@ var Search = React.createClass({
     SearchUtil.search(meta.query, meta.page + 1);
   },
 
-  executeSearch: function (result, e) {
+  executeSearch: function (result, type, e) {
     e.preventDefault();
     SearchResultsStore.clear();
     ReactDOM.findDOMNode(this.refs.searchQuery).value = "";
     this.setState({ query: "" });
-    this.context.router.push("/images/" + result.id);
+    this.context.router.push("/" + type + "/" + result.id);
   },
 
 
@@ -63,19 +63,19 @@ var Search = React.createClass({
       if (result._type === "Image") {
         return (
           <li key={ result.id + "Image" }>
-            <button onClick={that.executeSearch.bind(that, result)}>Image, Title: {result.title}</button>
+            <button onClick={that.executeSearch.bind(that, result, "images")}>Image, Title: {result.title}</button>
           </li>
         );
       } else if (result._type === "User") {
         return (
           <li key= { result.id + "User"}>
-            <button onClick={that.executeSearch.bind(that, result)}>User, Username: {result.username}</button>
+            <button onClick={that.executeSearch.bind(that, result, "users")}>User, Username: {result.username}</button>
           </li>
         );
       } else if (result._type === "Comment") {
         return (
           <li key= {result.id + "Comment"}>
-            <button onClick={that.executeSearch.bind(that, result)}> Comment, Body: {result.body} </button>
+            <button onClick={that.executeSearch.bind(that, result, "comments")}> Comment, Body: {result.body} </button>
           </li>
         );
       }
