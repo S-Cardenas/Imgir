@@ -30,14 +30,8 @@ var Comments = React.createClass({
       utils = CommentUtils;
       store = CommentStore;
     }
-    var commentCount;
-    if (this.props.commentCount) {
-      commentCount = this.props.commentCount;
-    } else {
-      commentCount = 0;
-    }
 		return {
-			comments: store.all(), replyComment: null, utils: utils, store: store, commentCount: commentCount
+			comments: store.all(), replyComment: null, utils: utils, store: store
 		};
 	},
 
@@ -51,7 +45,7 @@ var Comments = React.createClass({
 	},
 
 	_onChange: function () {
-		this.setState({comments: this.state.store.all(), commentCount: this.state.commentCount});
+		this.setState({comments: this.state.store.all()});
 	},
 
 
@@ -75,7 +69,7 @@ var Comments = React.createClass({
     }
     this.state.utils.fetchComments(this.props.params.id);
 		if (close) {
-			this.setState({replyComment:null, commentCount: this.state.commentCount + 1});
+			this.setState({replyComment:null});
 		}
 	},
 
@@ -153,9 +147,6 @@ var Comments = React.createClass({
         <form className='comment-form' onSubmit={this.executeSubmit.bind(this, null)}>
           <CommentForm />
         </form>
-        <div className='comment-counter'>
-          {this.state.commentCount} comments
-        </div>
         {comments}
       </div>
       ;
