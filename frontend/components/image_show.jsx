@@ -139,7 +139,7 @@ var ImageShow = React.createClass({
 							</div>
 						</div>
 						<div className='comments-section image-show'>
-							<Comments params={this.props.params} parentType={"image"}/>
+							<Comments params={this.props.params} parentType={"image"} commentCount={image.comment_count}/>
 						</div>
 					</div>
 				);

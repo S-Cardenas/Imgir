@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
   include PgSearch
   multisearchable against: [:body]
-  
+
 	validates :body, :user_id, :image_id, presence: true;
 
 	belongs_to :image
@@ -10,7 +10,8 @@ class Comment < ActiveRecord::Base
 		:child_comments,
 		class_name: 'Comment',
 		primary_key: :id,
-		foreign_key: :parent_comment_id
+		foreign_key: :parent_comment_id,
+    dependent: :destroy
 	)
 
 	belongs_to(
