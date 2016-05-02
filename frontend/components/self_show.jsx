@@ -24,7 +24,7 @@ var SelfShow = React.createClass({
 	},
 
   componentWillReceiveProps: function(nextProps) {
-    UserUtil.fetchImages(nextProps.id);
+    UserUtil.fetchImages(nextProps.paramId);
   },
 
 	componentWillUnmount: function() {

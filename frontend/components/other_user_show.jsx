@@ -18,7 +18,7 @@ var OtherUserShow = React.createClass({
 	},
 
   componentWillReceiveProps: function(nextProps) {
-    UserUtil.fetchComments(nextProps.id);
+    UserUtil.fetchComments(nextProps.paramId);
   },
 
 	componentWillUnmount: function() {
