@@ -1,6 +1,7 @@
 var ImageActions = require('../actions/image_actions');
 
 var ImageUtils = {
+
 	fetchImages: function () {
 		$.ajax({
 			type: 'GET',
@@ -30,7 +31,7 @@ var ImageUtils = {
 		});
 	},
 
-	createImage: function (formData) {
+	createImage: function (formData, callback) {
 		$.ajax({
 			type: 'POST',
 			url: '/api/images',
@@ -40,10 +41,11 @@ var ImageUtils = {
 			dataType: 'json',
 			success: function (data) {
 				ImageActions.workWithImage(data);
+        callback && callback(data)
 			},
 			error: function () {
 				console.log("Image didn't go in, sir.");
-			}
+			},
 
 		});
 	},

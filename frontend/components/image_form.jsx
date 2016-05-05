@@ -5,6 +5,10 @@ var Link = require('react-router').Link;
 
 var ImageForm = React.createClass({
 
+  contextTypes : {
+    router: React.PropTypes.object.isRequired
+  },
+
 	getInitialState: function() {
 		return {
 			imageUrl: null
@@ -13,9 +17,12 @@ var ImageForm = React.createClass({
 
 	executeSubmit: function (e) {
 		e.preventDefault();
+    var router = this.context.router;
 		var formData = new FormData();
 		formData.append("image[img]", this.state.imageFile);
-		ImageUtils.createImage(formData);
+		ImageUtils.createImage(formData, function (data) {
+      router.push("/users/" + data.user_id);
+    });
 		ModalAction.setModal(null);
 	},
 

@@ -414,6 +414,16 @@ body {
 	font-size: 24px
 }
 
+.no-images-show > div {
+  float: left;
+}
+
+.fancy-upload {
+  color: #3171E0;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
 .image-index-item {
 	float:left;
 	color: #fff;
@@ -774,6 +784,7 @@ body {
 	width: 1220px;
 	margin: auto;
 }
+
 
 /*COMMENTS*/
 

@@ -2,6 +2,7 @@ var React = require('react');
 var UserImageStore = require('../stores/user_image_store');
 var UserCommentStore = require('../stores/user_comment_store');
 var ImageShow = require('./image_show');
+var ImageForm = require('./image_form');
 var ImageIndexItem = require('./image_index_item');
 var ModalAction = require('../actions/modal_action');
 var UserUtil = require('../util/user_utils');
@@ -71,6 +72,14 @@ var SelfShow = React.createClass({
 		ModalAction.setModal(preppedModal());
 	},
 
+  handleClickImageForm: function (e) {
+    if (SessionStore.currentUser()) {
+      ModalAction.setModal(<ImageForm />);
+    } else {
+      this.context.router.push('/login');
+    }
+  },
+
 
 	render: function() {
 		var images = this.state.images.map( function (image) {
@@ -87,15 +96,17 @@ var SelfShow = React.createClass({
 		}.bind(this));
 		if (images.length === 0) {
 			images = (
-					<div className="no-images-show">
-						No Images
+					<div className="no-images-show group">
+            <div>You don't have any images yet. Why don't you</div>
+						<div className="fancy-upload" onClick={this.handleClickImageForm}>upload</div>
+            <div>one?</div>
 					</div>
 				);
 		}
     return (
 			<div className='user-images-display group'>
 				<div className='image-index user-index group'>
-				{images}
+  				{images}
 				</div>
 				<div className='user-index-sidebar'>
 					<button className='create-album-button image-show-privacy'
