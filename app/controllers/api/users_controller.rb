@@ -8,6 +8,17 @@ class Api::UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.username == "Guest"
 			@user.username = User.create_guest_username
+      @user.images.new(
+        title: "Sample image",
+        description: "A sample image to work with",
+        private: true
+        )
+      @user.images.new(
+        title: "Another sample image",
+        description: "Another sample image to work with",
+        private: true,
+        img: File.open("app/assets/images/gir_lying_down.jpg")
+      )
 		end
 		if @user.save
 			login!(@user)

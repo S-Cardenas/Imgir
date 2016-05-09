@@ -13,8 +13,11 @@ class ApplicationController < ActionController::Base
 	end
 
 	def logout_user!
+    user = current_user
 		current_user.reset_session_token!
 		session[:session_token] = nil
+    user.destroy if user.username =~ /^Guest_\d{0,6}/
+
 	end
 
 	def current_user

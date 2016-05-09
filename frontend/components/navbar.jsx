@@ -3,6 +3,7 @@ var ReactRouter = require('react-router');
 var SessionStore = require('../stores/session_store');
 var SessionUtil = require('../util/session_utils');
 var Link = require('react-router').Link;
+var UserUtil = require('../util/user_utils');
 var ImageForm = require('./image_form');
 var ModalAction = require('../actions/modal_action');
 var Search = require('./search');
@@ -41,6 +42,18 @@ var Navbar = React.createClass({
 		}
 	},
 
+  executeGuestLogin: function (e) {
+    e.preventDefault();
+    var router = this.context.router;
+    var username = "Guest";
+    var password = "1234567";
+    UserUtil.createAccount({username: username, password: password}, function(credentials) {
+      SessionUtil.login(credentials, function () {
+        router.push("/images");
+      });
+    });
+  },
+
 	render: function() {
 		var signOut = function () {
 			SessionUtil.logout();
@@ -52,6 +65,7 @@ var Navbar = React.createClass({
 					<div className='signin group'>
 						<Link to='/login'>Sign In </Link>
 						<Link to='/users/new'>Sign Up</Link>
+            <button onClick={this.executeGuestLogin}>Guest Sign In</button>
 						< Search />
 					</div>
 				);

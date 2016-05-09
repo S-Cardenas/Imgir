@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include PgSearch
   multisearchable against: [:username]
-  
+
 	validates :username, presence: true
 	validates :username, uniqueness: true
 	validate :secure_account
@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
 	after_initialize :ensure_session_token
 	attr_reader :password
 
-	has_many(:images)
-	has_many(:albums)
+	has_many(:images, dependent: :destroy)
+	has_many(:albums, dependent: :destroy)
 	has_many(:comments)
 
 	def self.find_by_credentials(username, password)

@@ -88,7 +88,7 @@ body {
 
 .new-image-button-container {
 	display: block;
-	width: 400px;
+	width: 350px;
 }
 
 .new-image {
@@ -121,6 +121,13 @@ body {
 }
 
 .signin > a {
+	padding: 12px 10px;
+	font-size: 14px;
+	color: #ddddd1;
+	float: right;
+}
+
+.signin > button {
 	padding: 12px 10px;
 	font-size: 14px;
 	color: #ddddd1;
@@ -166,7 +173,7 @@ body {
 
 .search-form > input:focus {
   transition-duration: .5s;
-	width:495px;
+	width:345px;
 	outline: none;
 	border:none;
 	border-bottom: 4px solid #B5A10F;
