@@ -46,11 +46,11 @@
 
 - As for pages involving more than one image, merely changing the image display wasn't enough, as I would still be loading full images. In order to optimize the index, I used Paperclip and ImageMagick to resize the image itself. To accomplish this, I gave each image two style URLs, indicating when they are being displayed as index items or comment thumbnails.
 
-      has_attached_file :img, styles:
-        { index: "180x180^",
-        comment: "70x70#" },
-        convert_options: {
-        index: "-gravity Center -crop '180x180+0+0' "}
+        has_attached_file :img, styles:
+          { index: "180x180^",
+          comment: "70x70#" },
+          convert_options: {
+          index: "-gravity Center -crop '180x180+0+0' "}
 
   By using the "index" style, an image will be reduced (based on the smaller dimension) down to 180x180, then centered and cropped for the square. Similarly, comments were reduced to a 70x70 square.
 
