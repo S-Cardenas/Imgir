@@ -20,6 +20,6 @@ end
 
 if show_image ||= false
   json.image do
-    json.partial!('api/images/image', image: comment.image, show_user: false, show_comments: false)
+    json.partial!('api/images/image', image: comment.image, show_user: false, show_comments: false, resize: "comment")
   end
 end

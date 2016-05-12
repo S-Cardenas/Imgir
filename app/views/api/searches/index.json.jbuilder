@@ -11,7 +11,7 @@ json.search_results do
     when Comment
       json.partial! "api/comments/comment", comment: search_result
     when Image
-      json.partial! "api/images/image", image: search_result
+      json.partial! "api/images/image", image: search_result, resize: "none"
     end
     json._type search_result.class.to_s
 

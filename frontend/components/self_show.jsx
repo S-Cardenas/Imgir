@@ -3,7 +3,6 @@ var UserImageStore = require('../stores/user_image_store');
 var UserCommentStore = require('../stores/user_comment_store');
 var ImageShow = require('./image_show');
 var ImageForm = require('./image_form');
-var ImageIndexItem = require('./image_index_item');
 var ModalAction = require('../actions/modal_action');
 var UserUtil = require('../util/user_utils');
 var Link = require('react-router').Link;
@@ -42,8 +41,7 @@ var SelfShow = React.createClass({
 				return(
 					<div className='modal' onClick={this.handleModalClick}>
 						<div onClick={this.stopProp}>
-						< ImageShow imageid={image.id} editable={true}/>
-						</div>
+              < ImageShow imageid={image.id} editable={true}/></div>
 					</div>
 				);
 			};
@@ -52,6 +50,7 @@ var SelfShow = React.createClass({
 
 	handleModalClick: function () {
 		ModalAction.setModal(null);
+    UserUtil.fetchImages(this.props.paramId);
 	},
 
 	stopProp: function (e) {
@@ -88,7 +87,7 @@ var SelfShow = React.createClass({
 				<div className='image-index-item' key={image.id}>
 					<div className='image-index-title'>{image.title}</div>
 					<div className='index-no-overflow'>
-						<a onClick={this.executeOpen.bind(this, image)} href='#'>< ImageIndexItem image={image.image_url} /></a>
+						<a onClick={this.executeOpen.bind(this, image)} href='#'><img src={image.image_url} ref="image" /></a>
 
 					</div>
 				</div>

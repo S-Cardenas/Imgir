@@ -6,7 +6,6 @@ var CommentStore = require('../stores/comment_store');
 var CommentForm = require('./comment_form');
 var Comment = require('./comment');
 
-var ImageResizer = require('./image_resizer');
 
 var UserUtils = require('../util/user_utils');
 var UserCommentStore = require('../stores/user_comment_store');
@@ -118,10 +117,7 @@ var Comments = React.createClass({
           thumb = <div className="comment-thumb">
               <Link
               to={showUrl}>
-                <ImageResizer
-                image={comment.image.image_url}
-                class1="image-index-item-tall"
-                class2="image-index-item-wide"/>
+                <img src={comment.image.image_url}></img>
               </Link>
             </div>;
           floaters = true;

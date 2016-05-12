@@ -11,7 +11,8 @@ class Api::UsersController < ApplicationController
       @user.images.new(
         title: "Sample image",
         description: "A sample image to work with",
-        private: true
+        private: true,
+        img: File.open("app/assets/images/gir.jpg")
         )
       @user.images.new(
         title: "Another sample image",

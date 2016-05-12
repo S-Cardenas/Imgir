@@ -2,7 +2,15 @@ json.extract!(
 	image,
 	:id, :title, :description, :user_id, :album_id, :private
 )
-json.image_url asset_path(image.img.url)
+
+if resize == "index"
+  json.image_url asset_path(image.img.url(:index))
+elsif resize == "comment"
+  json.image_url asset_path(image.img.url(:comment))
+else
+  json.image_url asset_path(image.img.url)
+end
+
 if show_user ||= false
 	json.user do
 		json.partial!('api/users/user', user: image.user, show_images: false, show_comments: false)

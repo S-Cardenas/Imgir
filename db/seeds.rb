@@ -11,7 +11,7 @@ user9000 = User.create!(username: "Guest", password: "1234567")
 
 Image.destroy_all
 
-image1 = Image.create!(title: "dogsuit GIR", user_id: user1.id, private: false, description: "Look at how stupid this dog suit is. What a stupid suit.")
+image1 = Image.create!(title: "dogsuit GIR", user_id: user1.id, private: false, description: "Look at how stupid this dog suit is. What a stupid suit.", img: File.open("app/assets/images/gir.jpg"))
 
 image2 = Image.create!(title: "GIR with half of his dog suit on", user_id: user1.id, private: true, description: "I am not the most creative when it comes to uploads.", img: File.open("app/assets/images/gir_dog_suit_halfway.png"))
 

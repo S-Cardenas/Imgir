@@ -6,7 +6,7 @@ json.extract!(
 if show_images ||= false
 	json.images do
 		json.array!(user.images) do |image|
-			json.partial!('api/images/image', image: image, show_user: false)
+			json.partial!('api/images/image', image: image, show_user: false, resize: "index")
 		end
 	end
 end

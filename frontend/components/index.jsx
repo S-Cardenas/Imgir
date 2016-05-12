@@ -2,7 +2,6 @@ var React = require('react');
 var ImageUtils = require('../util/api_utils');
 var ImageStore = require('../stores/image_store');
 var Link = require('react-router').Link;
-var ImageResizer = require('./image_resizer');
 var SessionStore = require('../stores/session_store');
 
 var React = require('react');
@@ -32,7 +31,7 @@ var ImageIndex = React.createClass({
 				<div className='image-index-item' key={image.id}>
 					<div className='image-index-title'>{image.title}</div>
 					<div className='index-no-overflow'>
-						<Link to={showUrl}><ImageResizer image={image.image_url} class1="image-index-item-tall" class2="image-index-item-wide"/> </Link>
+						<Link to={showUrl}><img src={image.image_url}></img> </Link>
 
 					</div>
 				</div>
