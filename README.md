@@ -46,25 +46,25 @@
 
 - As for pages involving more than one image, merely changing the image display wasn't enough, as I would still be loading full images. In order to optimize the index, I used Paperclip and ImageMagick to resize the image itself. To accomplish this, I gave each image two style URLs, indicating when they are being displayed as index items or comment thumbnails.
 
-    has_attached_file :img, styles:
-      { index: "180x180^",
-      comment: "70x70#" },
-      convert_options: {
-      index: "-gravity Center -crop '180x180+0+0' "}
+      has_attached_file :img, styles:
+        { index: "180x180^",
+        comment: "70x70#" },
+        convert_options: {
+        index: "-gravity Center -crop '180x180+0+0' "}
 
-By using the "index" style, an image will be reduced (based on the smaller dimension) down to 180x180, then centered and cropped for the square. Similarly, comments were reduced to a 70x70 square.
+  By using the "index" style, an image will be reduced (based on the smaller dimension) down to 180x180, then centered and cropped for the square. Similarly, comments were reduced to a 70x70 square.
 
-My Image partial view is told whether it should resize the image, and if so, in which way.
+  My Image partial view is told whether it should resize the image, and if so, in which way.
 
-    if resize == "index"
-      json.image_url asset_path(image.img.url(:index))
-    elsif resize == "comment"
-      json.image_url asset_path(image.img.url(:comment))
-    else
-      json.image_url asset_path(image.img.url)
-    end
+      if resize == "index"
+        json.image_url asset_path(image.img.url(:index))
+      elsif resize == "comment"
+        json.image_url asset_path(image.img.url(:comment))
+      else
+        json.image_url asset_path(image.img.url)
+      end
 
-By changing the url in the view, the React components don't have to know what kind of url they are receiving and the resizing is done entirely in the back end.
+  By changing the url in the view, the React components don't have to know what kind of url they are receiving and the resizing is done entirely in the back end.
 
 - If you look at an image show page, comments for that image should display below it, but they have to be clear as to what they're replying to. Whereas many will reply to the image itself, there are several that will reply to the comments themselves but still need to be attached to the image. This is accomplished using an optional parent_comment_id column that, when not null, will nest the comments. I used a recursively called component that would find all child comments for a given comment and make them part of its display. The potential for a new reply form had to append itself to that, but actually be called through a method at the top level, so that only one form could appear at a time.
 
