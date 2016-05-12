@@ -13,17 +13,18 @@ var UserUtil = {
 		});
 	},
 
-	fetchImages: function(id) {
+	fetchImages: function(id, callback) {
 		$.ajax({
 			type: 'GET',
 			url: "/api/users/" + id,
 			dataType: "json",
 			success: function (data) {
 				UserActions.imagesReceived(data);
+        callback && callback();
 			},
 			error: function () {
 				console.log("User's images couldn't be fetched");
-			}
+			},
 		});
 	},
 

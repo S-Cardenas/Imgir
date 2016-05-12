@@ -2,6 +2,7 @@ var React = require('react');
 var ImageUtils = require('../util/api_utils');
 var ImageStore = require('../stores/image_store');
 var ModalAction = require('../actions/modal_action');
+var UserUtil = require('../util/user_utils');
 
 
 var imageEditForm = React.createClass({
@@ -26,7 +27,9 @@ var imageEditForm = React.createClass({
 		e.preventDefault();
 		e = e.currentTarget;
 		ImageUtils.editImage(e, this.props.image.id);
-		ModalAction.setModal(null);
+    UserUtil.fetchImages(this.props.image.user_id, function () {
+      ModalAction.setModal(null);
+    });
 	},
 
 	_onChange: function (e) {

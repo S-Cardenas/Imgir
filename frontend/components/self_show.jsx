@@ -41,7 +41,8 @@ var SelfShow = React.createClass({
 				return(
 					<div className='modal' onClick={this.handleModalClick}>
 						<div onClick={this.stopProp}>
-              < ImageShow imageid={image.id} editable={true}/></div>
+              < ImageShow imageid={image.id} editable={true}/>
+            </div>
 					</div>
 				);
 			};
@@ -49,8 +50,9 @@ var SelfShow = React.createClass({
 	},
 
 	handleModalClick: function () {
-		ModalAction.setModal(null);
-    UserUtil.fetchImages(this.props.paramId);
+    UserUtil.fetchImages(this.props.paramId, function () {
+      ModalAction.setModal(null);
+    });
 	},
 
 	stopProp: function (e) {

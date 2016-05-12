@@ -50,7 +50,7 @@
           { index: "180x180^",
           comment: "70x70#" },
           convert_options: {
-          index: "-gravity Center -crop '180x180+0+0' "}
+          index: "-gravity Center -crop '180x180+0+0' +repage "}
 
   By using the "index" style, an image will be reduced (based on the smaller dimension) down to 180x180, then centered and cropped for the square. Similarly, comments were reduced to a 70x70 square.
 

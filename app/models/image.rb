@@ -6,7 +6,7 @@ class Image < ActiveRecord::Base
     { index: "180x180^",
     comment: "70x70#" },
     convert_options: {
-    index: "-gravity Center -crop '180x180+0+0' "}
+    index: "-gravity Center -crop '180x180+0+0' +repage"}
 
 	validates_attachment_content_type :img, content_type: /\Aimage\/.*\Z/
 	belongs_to :user
